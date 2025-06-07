@@ -19,7 +19,7 @@ function App() {
 
         <main className="main-content">
           <Routes>
-            <Route path="/" element= {<Home/>} />
+            <Route path="/webelarroyo" element= {<Home/>} />
             <Route path="/habitaciones" element={<Habitaciones />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/contacto" element={<Contacto />} />

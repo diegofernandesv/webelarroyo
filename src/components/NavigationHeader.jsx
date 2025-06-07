@@ -17,7 +17,7 @@ const NavigationHeader = () => {
 
   return (
     <div className="navigation-header">
-      <Link to="/" className="logo-link">
+      <Link to="/webelarroyo" className="logo-link">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/109542cbc3c83c77d44b9819ca7bdc9467883379?placeholderIfAbsent=true"
           className="logo"
@@ -28,7 +28,7 @@ const NavigationHeader = () => {
       <div className="nav-container">
         <div className="nav-menu">
           <Link
-            to="/"
+            to="/webelarroyo"
             className={`nav-item ${isActive("/") ? "nav-item-active" : ""}`}
           >
             Inicio
