@@ -1,0 +1,397 @@
+/* Hotel Landing Page Main Container */
+.hotel-landing-page {
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Page Styles */
+.page-container {
+  width: 100%;
+  padding: 0;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #12273d 0%, #1a3a5c 100%);
+  padding: 80px 20px 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.page-hero {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.64px;
+}
+
+.page-subtitle {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.section-title {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #12273d;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Room Details Section */
+.room-details-section {
+  padding: 80px 20px;
+  background-color: #f8f9fa;
+}
+
+.room-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.amenity-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.amenity-card:hover {
+  transform: translateY(-4px);
+}
+
+.amenity-card h3 {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #12273d;
+  margin-bottom: 12px;
+}
+
+.amenity-card p {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Services Details Section */
+.services-details-section {
+  padding: 80px 20px;
+  background-color: white;
+}
+
+.services-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.service-detail {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(151, 187, 224, 0.2);
+}
+
+.service-detail:last-child {
+  border-bottom: none;
+}
+
+.service-detail h3 {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #12273d;
+  margin-bottom: 12px;
+}
+
+.service-detail p {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 80px 20px;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+}
+
+.contact-item {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item h3 {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #12273d;
+  margin-bottom: 12px;
+}
+
+.contact-item p {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.contact-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: rgba(151, 187, 224, 1);
+  color: #12273d;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.contact-link:hover {
+  background-color: rgba(131, 167, 204, 1);
+}
+
+/* Contact Form */
+.contact-form {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #12273d;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 2px solid rgba(151, 187, 224, 0.3);
+  border-radius: 8px;
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: rgba(151, 187, 224, 1);
+}
+
+.submit-button {
+  padding: 16px 32px;
+  background-color: rgba(151, 187, 224, 1);
+  color: #12273d;
+  border: none;
+  border-radius: 12px;
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  justify-self: start;
+}
+
+.submit-button:hover {
+  background-color: rgba(131, 167, 204, 1);
+  transform: translateY(-1px);
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .page-header {
+    padding: 120px 40px 80px 40px;
+  }
+
+  .page-title {
+    font-size: 48px;
+    letter-spacing: -0.96px;
+  }
+
+  .page-subtitle {
+    font-size: 20px;
+  }
+
+  .section-title {
+    font-size: 36px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .form {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+
+  .form-group:nth-child(5),
+  .form-group:nth-child(6),
+  .submit-button {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .page-header {
+    padding: 160px 80px 100px 80px;
+  }
+
+  .page-title {
+    font-size: 64px;
+    letter-spacing: -1.28px;
+  }
+
+  .page-subtitle {
+    font-size: 22px;
+  }
+
+  .section-title {
+    font-size: 42px;
+  }
+
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-title {
+    font-size: 72px;
+    letter-spacing: -1.44px;
+  }
+
+  .section-title {
+    font-size: 48px;
+  }
+}

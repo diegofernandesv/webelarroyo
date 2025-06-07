@@ -1,0 +1,271 @@
+/* Burger Menu Styles */
+.burger-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  z-index: 1001;
+}
+
+.burger-button:hover {
+  background-color: rgba(151, 187, 224, 0.1);
+}
+
+.burger-line {
+  width: 24px;
+  height: 2px;
+  background-color: #12273d;
+  margin: 2px 0;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+  border-radius: 50px;
+}
+
+.burger-open .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+    border-radius: 50px;
+}
+
+.burger-open .burger-line:nth-child(2) {
+  opacity: 0;
+    border-radius: 50px;
+}
+
+.burger-open .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+    border-radius: 50px;
+}
+
+.burger-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.burger-overlay-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.burger-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.burger-menu-open {
+  right: 0;
+}
+
+.burger-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(151, 187, 224, 0.2);
+}
+
+.burger-logo {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+.burger-close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: #12273d;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.burger-close:hover {
+  background-color: rgba(151, 187, 224, 0.1);
+}
+
+.burger-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0;
+  flex: 1;
+}
+
+.burger-nav-item {
+  margin: 0;
+}
+
+.burger-nav-link {
+  display: block;
+  padding: 16px 20px;
+  color: #12273d;
+  text-decoration: none;
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+}
+
+.burger-nav-link:hover,
+.burger-nav-link.active {
+  background-color: rgba(151, 187, 224, 0.1);
+  border-left-color: rgba(151, 187, 224, 1);
+  color: #12273d;
+  font-weight: 700;
+}
+
+.burger-actions {
+  padding: 20px;
+  border-top: 1px solid rgba(151, 187, 224, 0.2);
+}
+
+.burger-book-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: rgba(151, 187, 224, 1);
+  border-radius: 20px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.burger-book-button:hover {
+  background-color: rgba(131, 167, 204, 1);
+  transform: translateY(-1px);
+}
+
+.burger-book-text {
+  color: #12273d;
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.burger-arrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: #12273d;
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.burger-arrow-image {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.burger-contact-info {
+  text-align: center;
+}
+
+.burger-contact-text {
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  color: #12273d;
+  margin: 0 0 8px 0;
+}
+
+.burger-whatsapp-link {
+  color: rgba(151, 187, 224, 1);
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.burger-whatsapp-link:hover {
+  color: #12273d;
+}
+
+/* Hide burger menu on larger screens */
+@media (min-width: 768px) {
+  .burger-button {
+    display: none;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 991px) {
+  .burger-button {
+    display: flex;
+  }
+
+  .burger-menu {
+    width: 350px;
+  }
+
+  .burger-nav-link {
+    font-size: 20px;
+    padding: 18px 24px;
+  }
+
+  .burger-book-text {
+    font-size: 18px;
+  }
+}
+
+/* Prevent body scroll when menu is open */
+body.burger-menu-open {
+  overflow: hidden;
+}
