@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Habitaciones from "./pages/Habitaciones";
 import Servicios from "./pages/Servicios";
 import Contacto from "./pages/Contacto";
+import LocationSection from "./components/LocationSection";
 
 function App() {
   return (
@@ -18,11 +19,11 @@ function App() {
 
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element= {<Home/>} />
             <Route path="/habitaciones" element={<Habitaciones />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/location" element={<LocationSection />} />
           </Routes>
         </main>
 

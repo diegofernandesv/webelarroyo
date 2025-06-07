@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
 import RoomCard from "./RoomCard";
-import ParallaxContainer from "./ParallaxContainer";
-import { useScrollAnimation } from "../hooks/useParallax";
 import "./css/RoomsSection.css";
+import { useScrollAnimation, useMouseParallax } from "../hooks/useParallax";
 
 const RoomsSection = () => {
   const { isVisible: titleVisible, elementRef: titleRef } =
@@ -137,25 +136,21 @@ const RoomsSection = () => {
         ref={navRef}
         className={`rooms-navigation scroll-animate-right ${navVisible ? "animate-in" : ""}`}
       >
-        <ParallaxContainer speed={0.1}>
-          <div className="nav-arrow-button" onClick={handleScrollLeft} tabIndex={0} role="button" aria-label="Scroll left">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/f238bbac7c3eedbf4a8952de000153f03e35a722?placeholderIfAbsent=true"
-              className="nav-arrow"
-              alt="Previous"
-            />
-          </div>
-        </ParallaxContainer>
+        <div className="nav-arrow-button" onClick={handleScrollLeft} tabIndex={0} role="button" aria-label="Scroll left">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/f238bbac7c3eedbf4a8952de000153f03e35a722?placeholderIfAbsent=true"
+            className="nav-arrow"
+            alt="Previous"
+          />
+        </div>
 
-        <ParallaxContainer speed={0.1}>
-          <div className="nav-arrow-button" onClick={handleScrollRight} tabIndex={0} role="button" aria-label="Scroll right">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c69b2ba1217b00b138d62fe74c00ec49fa305779?placeholderIfAbsent=true"
-              className="nav-arrow"
-              alt="Next"
-            />
-          </div>
-        </ParallaxContainer>
+        <div className="nav-arrow-button" onClick={handleScrollRight} tabIndex={0} role="button" aria-label="Scroll right">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c69b2ba1217b00b138d62fe74c00ec49fa305779?placeholderIfAbsent=true"
+            className="nav-arrow"
+            alt="Next"
+          />
+        </div>
       </div>
 
       <div ref={setCardsContainerRef} className="room-cards-container">
@@ -164,13 +159,13 @@ const RoomsSection = () => {
             key={index}
             className={`room-card-wrapper stagger-animate ${cardsVisible ? "animate-in" : ""} stagger-${(index % 6) + 1}`}
           >
-            <ParallaxContainer speed={0.1 + index * 0.05}>
+            <div>
               <RoomCard
                 roomImage={room.image}
                 amenities={room.amenities}
                 isVectorStyle={room.isVectorStyle}
               />
-            </ParallaxContainer>
+            </div>
           </div>
         ))}
       </div>

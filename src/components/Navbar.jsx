@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useScrollAnimation, useMouseParallax } from "../hooks/useParallax";
 import "./css/LocationSection.css";
 
@@ -17,6 +18,11 @@ const LocationSection = () => {
 
   return (
     <div className="location-section">
+      <nav>
+        <Link to="/">Inicio</Link>
+        <Link to="/rooms">Habitaciones</Link>
+        <Link to="/location">Ubicación</Link>
+      </nav>
       <div className="location-container">
         <div className="location-content-wrapper">
           <div className="location-text-content">
