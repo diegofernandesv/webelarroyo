@@ -1,7 +1,4 @@
 /* Import fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-/* Import SF Pro Display */
-@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
