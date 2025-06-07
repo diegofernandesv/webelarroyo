@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import ContactBanner from "./components/ContactBanner";
 import NavigationHeader from "./components/NavigationHeader";
@@ -18,7 +18,8 @@ function App() {
 
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/habitaciones" element={<Habitaciones />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/contacto" element={<Contacto />} />
