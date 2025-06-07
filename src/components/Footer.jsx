@@ -1,14 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./css/Footer.css";
 
 const Footer = () => {
-  const footerLinks = [
-    { text: "Inicio", active: true },
-    { text: "Habitaciones", active: false },
-    { text: "Servicios", active: false },
-    { text: "Sobre Nosotros", active: false },
-  ];
-
   const socialIcons = [
     "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/a6637b8b82d84e4ce81dc776d6e6e7aaebaca95f?placeholderIfAbsent=true",
     "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/46f44abf84dd9a1c58c3d8501972c9e9c7303313?placeholderIfAbsent=true",
@@ -23,36 +17,31 @@ const Footer = () => {
           className="footer-logo"
           alt="Hotel Logo"
         />
-        <div className="footer-links-container">
-          <div className="footer-links">
-            {footerLinks.map((link, index) => (
-              <div
+        <nav className="footer-nav">
+          <Link to="/">Inicio</Link>
+          <Link to="/habitaciones">Habitaciones</Link>
+          <Link to="/servicios">Servicios</Link>
+          <Link to="/contacto">Contacto</Link>
+          <Link to="/location">Ubicación</Link>
+        </nav>
+        <div className="footer-info">
+          <div className="social-icons">
+            {socialIcons.map((icon, index) => (
+              <img
                 key={index}
-                className={`footer-link ${link.active ? "footer-link-active" : ""}`}
-              >
-                {link.text}
-              </div>
+                src={icon}
+                className="social-icon"
+                alt="Social Media"
+              />
             ))}
           </div>
-          <div className="footer-info">
-            <div className="social-icons">
-              {socialIcons.map((icon, index) => (
-                <img
-                  key={index}
-                  src={icon}
-                  className="social-icon"
-                  alt="Social Media"
-                />
-              ))}
-            </div>
-            <div className="footer-copyright">©2022 Hotel El Arroyo.</div>
-            <div className="footer-address">
-              USA Office: FERCAT INVESTMENT LLC
-              <br />
-              12211 Regency Village Drive,
-              <br />
-              Orlando, FL 32821
-            </div>
+          <div className="footer-copyright">©2022 Hotel El Arroyo.</div>
+          <div className="footer-address">
+            USA Office: FERCAT INVESTMENT LLC
+            <br />
+            12211 Regency Village Drive,
+            <br />
+            Orlando, FL 32821
           </div>
         </div>
       </div>
