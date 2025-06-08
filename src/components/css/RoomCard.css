@@ -1,8 +1,8 @@
 /* Room Card */
 .room-card {
   border-radius: 24px;
-  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  /* box-shadow removed */
+  background-color: #fcfcfc;
   min-width: 280px;
   width: 100%;
   max-width: 300px;
@@ -11,13 +11,7 @@
     transform 0.3s ease,
 }
 
-.room-card:hover {
-  transform: translateY(-8px) scale(1.02);
-}
 
-.room-card:hover .room-image {
-  transform: scale(1.05);
-}
 
 .room-image {
   transition: transform 0.4s ease;
@@ -90,7 +84,7 @@
 
 .amenity-item {
   border-radius: 20px;
-  background-color: rgba(248, 249, 250, 1);
+  background-color: rgb(245, 246, 247);
   display: flex;
   min-height: 80px;
   padding: 15px 12px;
@@ -331,12 +325,7 @@
     border-radius: 32px;
     min-width: 400px;
     max-width: 500px;
-    box-shadow:
-      0px 321px 90px 0px rgba(0, 0, 0, 0),
-      0px 205.5px 82.5px 0px rgba(0, 0, 0, 0.01),
-      0px 115.5px 69px 0px rgba(0, 0, 0, 0.03),
-      0px 51px 51px 0px rgba(0, 0, 0, 0.05),
-      0px 13.5px 28.5px 0px rgba(0, 0, 0, 0.06);
+    /* box-shadow removed */
   }
 
   .room-card-content {
@@ -439,9 +428,8 @@
 @media (min-width: 1200px) {
   .room-card {
     border-radius: 36px;
-    min-width: 534px;
-    width: 534px;
-    min-height: 786px;
+    width: 334px;
+    height: auto;
   }
 
   .room-card-content {
@@ -470,8 +458,8 @@
     border-radius: 36px;
     min-height: 131px;
     padding: 29px 24px;
-    width: 141px;
-    max-width: 141px;
+    width: 148px;
+    height: 148px;
   }
 
   .amenity-item:nth-child(2),
@@ -480,13 +468,13 @@
   }
 
   .amenity-content {
-    width: 93px;
+    width: 80px;
     gap: 15px;
   }
 
   .amenity-icon {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     aspect-ratio: 1.41;
   }
 
@@ -495,7 +483,7 @@
   }
 
   .amenity-text {
-    font-size: 21px;
+    font-size: 16px;
     margin-top: 0;
   }
 
