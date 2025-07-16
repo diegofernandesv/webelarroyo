@@ -1,13 +1,34 @@
-
+import React from "react";
+import { useLanguage } from "../context/LanguageContext";
 import "./css/Footer.css";
 
+const footerTexts = {
+  ES: {
+    links: [
+      "Inicio",
+      "Habitaciones",
+      "Servicios",
+      "Sobre Nosotros"
+    ],
+    copyright: "©2022 Hotel El Arroyo.",
+    address: "USA Oficina: FERCAT INVESTMENT LLC\n12211 Regency Village Drive,\nOrlando, FL 32821"
+  },
+  EN: {
+    links: [
+      "Home",
+      "Rooms",
+      "Services",
+      "About Us"
+    ],
+    copyright: "©2022 Hotel El Arroyo.",
+    address: "USA Office: FERCAT INVESTMENT LLC\n12211 Regency Village Drive,\nOrlando, FL 32821"
+  }
+};
+
 const Footer = () => {
-  const footerLinks = [
-    { text: "Inicio", active: true },
-    { text: "Habitaciones", active: false },
-    { text: "Servicios", active: false },
-    { text: "Sobre Nosotros", active: false },
-  ];
+  const { language } = useLanguage();
+  const t = footerTexts[language];
+  const footerLinks = t.links.map((text, i) => ({ text, active: i === 0 }));
 
   const socialIcons = [
     "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/a6637b8b82d84e4ce81dc776d6e6e7aaebaca95f?placeholderIfAbsent=true",
@@ -45,13 +66,14 @@ const Footer = () => {
                 />
               ))}
             </div>
-            <div className="footer-copyright">©2022 Hotel El Arroyo.</div>
+            <div className="footer-copyright">{t.copyright}</div>
             <div className="footer-address">
-              USA Office: FERCAT INVESTMENT LLC
-              <br />
-              12211 Regency Village Drive,
-              <br />
-              Orlando, FL 32821
+              {t.address.split("\n").map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </div>
           </div>
         </div>

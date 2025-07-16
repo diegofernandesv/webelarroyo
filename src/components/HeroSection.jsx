@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import image1 from "../assets/image1.png";
 import "./css/HeroSection.css";
+import { useLanguage } from "../context/LanguageContext";
 
 const useScrollAnimation = (threshold = 0.5) => {
   const elementRef = useRef(null);
@@ -22,7 +23,22 @@ const useScrollAnimation = (threshold = 0.5) => {
   return { isVisible, elementRef };
 };
 
+const heroTexts = {
+  ES: {
+    title1: "Tranquilidad y Confort",
+    title2: "en el Centro de Caracas",
+    button: "Nuestras Habitaciones"
+  },
+  EN: {
+    title1: "Tranquility and Comfort",
+    title2: "in the Center of Caracas",
+    button: "Our Rooms"
+  }
+};
+
 const HeroSection = () => {
+  const { language } = useLanguage();
+  const t = heroTexts[language];
   const { isVisible: titleVisible, elementRef: titleRef } = useScrollAnimation(0.3);
   const { isVisible: buttonVisible, elementRef: buttonRef } = useScrollAnimation(0.5);
 
@@ -67,16 +83,16 @@ const HeroSection = () => {
           ref={titleRef}
           className={`hero-title${titleVisible ? " animate-in" : ""}${titleVisible === undefined ? " not-animated" : ""}`}
         >
-          Tranquilidad y Confort
+          {t.title1}
           <br />
-          en el Centro de Caracas
+          {t.title2}
         </h1>
 
         <div
           ref={buttonRef}
           className={`hero-button ${buttonVisible ? "animate-in" : ""}`}
         >
-          <span className="hero-button-text">Nuestras Habitaciones</span>
+          <span className="hero-button-text">{t.button}</span>
           <div className="hero-arrow-icon">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/6cae9776603b35b835ae5d71b997bb889b43013f?placeholderIfAbsent=true"

@@ -2,8 +2,25 @@ import React, { useRef } from "react";
 import RoomCard from "./RoomCard";
 import "./css/RoomsSection.css";
 import { useScrollAnimation, useMouseParallax } from "../hooks/useParallax";
+import { useLanguage } from "../context/LanguageContext";
+
+const texts = {
+  ES: {
+    title: "Habitaciones pensadas para tu comodidad",
+    amenities: "1 Cama",
+    smartTv: "Smart Tv",
+  },
+  EN: {
+    title: "Rooms designed for your comfort",
+    amenities: "1 Bed",
+    smartTv: "Smart TV",
+  },
+};
 
 const RoomsSection = () => {
+  const { language } = useLanguage();
+  const t = texts[language];
+
   const { isVisible: titleVisible, elementRef: titleRef } =
     useScrollAnimation(0.2);
   const { isVisible: navVisible, elementRef: navRef } = useScrollAnimation(0.3);
@@ -16,15 +33,15 @@ const RoomsSection = () => {
         "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true",
       amenities: [
         {
-          name: "1 Cama",
+          name: t.amenities,
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/2d4b0a57ec785cff810effbaad4fdb02d4c92a4a?placeholderIfAbsent=true",
         },
         {
-          name: "Smart Tv",
+          name: t.smartTv,
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
         },
         {
-          name: "Smart Tv",
+          name: t.smartTv,
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
         },
       ],
@@ -34,15 +51,15 @@ const RoomsSection = () => {
         "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true",
       amenities: [
         {
-          name: "1 Cama",
+          name: t.amenities,
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/2d4b0a57ec785cff810effbaad4fdb02d4c92a4a?placeholderIfAbsent=true",
         },
         {
-          name: "Smart Tv",
+          name: t.smartTv,
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
         },
         {
-          name: "Smart Tv",
+          name: t.smartTv,
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
         },
       ],
@@ -52,15 +69,15 @@ const RoomsSection = () => {
         "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/27ed5d5f5c184350a998540474fd1713d48e6502?placeholderIfAbsent=true",
       amenities: [
         {
-          name: "1 Cama",
+          name: t.amenities,
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/2d4b0a57ec785cff810effbaad4fdb02d4c92a4a?placeholderIfAbsent=true",
         },
         {
-          name: "Smart Tv",
+          name: t.smartTv,
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
         },
         {
-          name: "Smart Tv",
+          name: "4500ca7887ad8369846a20d1e46ef316804a8f53",
           icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/4500ca7887ad8369846a20d1e46ef316804a8f53?placeholderIfAbsent=true",
         },
       ],
@@ -69,9 +86,9 @@ const RoomsSection = () => {
       image:
         "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
       amenities: [
-        { name: "1 Cama", type: "bed" },
-        { name: "Smart Tv", type: "tv" },
-        { name: "Smart Tv", type: "tv" },
+        { name: t.amenities, type: "bed" },
+        { name: t.smartTv, type: "tv" },
+        { name: t.smartTv, type: "tv" },
       ],
       isVectorStyle: true,
     },
@@ -79,9 +96,9 @@ const RoomsSection = () => {
       image:
         "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
       amenities: [
-        { name: "1 Cama", type: "bed" },
-        { name: "Smart Tv", type: "tv" },
-        { name: "Smart Tv", type: "tv" },
+        { name: t.amenities, type: "bed" },
+        { name: t.smartTv, type: "tv" },
+        { name: t.smartTv, type: "tv" },
       ],
       isVectorStyle: true,
     },
@@ -89,9 +106,9 @@ const RoomsSection = () => {
       image:
         "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
       amenities: [
-        { name: "1 Cama", type: "bed" },
-        { name: "Smart Tv", type: "tv" },
-        { name: "Smart Tv", type: "tv" },
+        { name: t.amenities, type: "bed" },
+        { name: t.smartTv, type: "tv" },
+        { name: t.smartTv, type: "tv" },
       ],
       isVectorStyle: true,
     },
@@ -129,7 +146,7 @@ const RoomsSection = () => {
         ref={titleRef}
         className={`rooms-title scroll-animate-left ${titleVisible ? "animate-in" : ""}`}
       >
-        Habitaciones pensadas para tu comodidad
+        {t.title}
       </div>
 
       <div

@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RoomsSection from "../components/RoomsSection";
 import CTASection from "../components/CTASection";
 
 const Habitaciones = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://hotels.cloudbeds.com/widget/load/noiHWD/vert?newWindow=1";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className="page-container">
       <div className="page-header">
