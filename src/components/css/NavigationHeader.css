@@ -1,20 +1,17 @@
 /* Navigation Header */
 .navigation-header {
-  border-radius: 16px;
-  background-color: rgba(253, 253, 253, 1);
-  box-shadow: 0px 4px 53px rgba(0, 0, 0, 0.11);
-  align-self: center;
-  position: relative;
-  z-index: 10;
+  background-color: #fdfdfd;
+  box-shadow: 0px 4px 53.2px 0px rgba(0, 0, 0, 0.11);
+  border-radius: 24px;
   display: flex;
-  margin-top: 20px;
   min-height: 70px;
-  width: 100%;
-  max-width: 1472px;
-  padding: 10px 20px;
+  width: calc(100% - 32px);
+  margin: 16px auto 0;
+  padding: 16px 20px;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  transition: box-shadow 0.3s ease;
 }
 
 .logo-link {
@@ -47,13 +44,8 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  font-family:
-    SF Pro Display,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 18px;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
   color: rgba(18, 39, 61, 1);
   font-weight: 400;
 }
@@ -71,6 +63,11 @@
 .nav-item:hover {
   background-color: rgba(151, 187, 224, 0.1);
   color: rgba(18, 39, 61, 1);
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid #97bbe0;
+  outline-offset: 2px;
 }
 
 .nav-item-active {
@@ -114,15 +111,15 @@
   background-color: rgba(131, 167, 204, 1);
 }
 
+.book-button:focus-visible {
+  outline: 2px solid #12273d;
+  outline-offset: 3px;
+}
+
 .book-text {
   color: rgba(18, 39, 61, 1);
-  font-size: 16px;
-  font-family:
-    SF Pro Display,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-size: var(--text-base);
+  font-family: var(--font-body);
   font-weight: 400;
   white-space: nowrap;
 }
@@ -151,31 +148,39 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  background: #e6f0fa;
+  background: transparent;
   border-radius: 20px;
-  padding: 6px 18px 6px 10px;
+  padding: 6px 10px;
   min-height: 36px;
   width: auto;
-  gap: 8px;
+  gap: 6px;
   border: none;
   box-shadow: none;
   position: relative;
-  font-family:
-    SF Pro Display,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 16px;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
   color: #12273d;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
 
 .language-selector:hover {
-  background: #d2e4f7;
+  background: rgba(151, 187, 224, 0.12);
   transform: translateY(-1px) scale(1.03);
+}
+
+.language-selector:focus-visible {
+  outline: 2px solid #97bbe0;
+  outline-offset: 3px;
+  border-radius: 20px;
+}
+
+.globe-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: #12273d;
 }
 
 .language-flag {
@@ -194,7 +199,7 @@
 }
 
 .language-text {
-  font-size: 16px;
+  font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: 0.5px;
   margin-right: 2px;
@@ -202,14 +207,15 @@
 
 .dropdown-arrow {
   width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #12273d;
   margin-left: 2px;
 }
 
 /* Tablet */
 @media (min-width: 768px) {
   .navigation-header {
-    border-radius: 20px;
-    margin-top: 30px;
     min-height: 80px;
     padding: 15px 40px;
   }
@@ -225,7 +231,6 @@
 
   .nav-menu {
     gap: 24px;
-    font-size: 20px;
   }
 
   .book-button {
@@ -233,10 +238,6 @@
     min-height: 44px;
     padding: 10px 20px;
     gap: 10px;
-  }
-
-  .book-text {
-    font-size: 18px;
   }
 
   .arrow-icon {
@@ -250,22 +251,21 @@
   }
 
   .language-selector {
-    width: 90px;
-    font-size: 18px;
+    width: auto;
   }
 
   .language-flag {
-    width: 90px;
-    height: 44px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
   }
 }
 
 /* Desktop */
 @media (min-width: 992px) {
   .navigation-header {
-    border-radius: 24px;
+    padding-left: 128px;
     min-height: 90px;
-    padding: 0 64px;
     justify-content: start;
   }
 
@@ -283,7 +283,6 @@
 
   .nav-menu {
     gap: 34px;
-    font-size: 24px;
     white-space: nowrap;
   }
 
@@ -297,10 +296,6 @@
     padding: 10px 30px;
   }
 
-  .book-text {
-    font-size: 24px;
-  }
-
   .arrow-icon {
     border-radius: 24px;
     width: 26px;
@@ -310,29 +305,28 @@
   }
 
   .language-selector {
-    width: 112px;
-    font-size: 24px;
+    width: auto;
     min-height: 48px;
-    padding: 10px;
+    padding: 9px 10px;
+    gap: 8px;
+  }
+
+  .globe-icon {
+    width: 26px;
+    height: 26px;
   }
 
   .language-flag {
-    width: 112px;
-    height: 48px;
-    border-radius: 12px;
-  }
-
-  .language-text {
-    font-size: 24px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
   }
 
   .dropdown-arrow {
-    width: 24px;
+    width: 20px;
+    height: 20px;
   }
+  
 }
 
-@media (min-width: 1200px) {
-  .navigation-header {
-    margin-top: 56px;
-  }
-}
+

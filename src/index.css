@@ -1,7 +1,23 @@
-/* Import fonts */
-
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* ── Font stack ──────────────────────────────────────── */
+  --font-display: SF Pro Display, Inter, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, sans-serif;
+  --font-body: SF Pro Display, Inter, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, sans-serif;
+
+  /* ── Type scale (perfect-fourth 1.333 base) ──────────── */
+  --text-xs:   0.75rem;     /* 12px — captions, legal          */
+  --text-sm:   0.875rem;    /* 14px — metadata, secondary UI   */
+  --text-base: 1rem;        /* 16px — body copy                */
+  --text-lg:   1.125rem;    /* 18px — nav links, button labels */
+  --text-xl:   1.375rem;    /* 22px — card headings            */
+  /* Fluid section heading: 26px → 36px */
+  --text-2xl:  clamp(1.625rem, 2vw + 0.75rem, 2.25rem);
+  /* Fluid hero: 32px → 52px */
+  --text-hero: clamp(2rem, 3.5vw + 1rem, 3.25rem);
+
+  /* ── Base layout ─────────────────────────────────────── */
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
 
@@ -20,10 +36,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
   background-color: #ffffff;
   color: #000000;
   line-height: 1.5;
@@ -58,6 +79,13 @@ body {
     Helvetica,
     Arial,
     sans-serif;
+}
+
+/* Global focus style — keyboard nav only */
+:focus-visible {
+  outline: 2px solid #97bbe0;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* Remove default button styles */
@@ -98,4 +126,14 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
 }

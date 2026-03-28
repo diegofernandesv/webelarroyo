@@ -1,122 +1,82 @@
-import React, { useRef } from "react";
+import { useRef, useEffect } from "react";
 import RoomCard from "./RoomCard";
 import "./css/RoomsSection.css";
-import { useScrollAnimation, useMouseParallax } from "../hooks/useParallax";
 import { useLanguage } from "../context/LanguageContext";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const texts = {
-  ES: {
-    title: "Habitaciones pensadas para tu comodidad",
-    amenities: "1 Cama",
-    smartTv: "Smart Tv",
-  },
-  EN: {
-    title: "Rooms designed for your comfort",
-    amenities: "1 Bed",
-    smartTv: "Smart TV",
-  },
+gsap.registerPlugin(ScrollTrigger);
+
+const sectionTitle = {
+  ES: "Habitaciones pensadas para tu comodidad",
+  EN: "Rooms designed for your comfort",
 };
+
+const rooms = [
+  {
+    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true",
+    price: "$35",
+    capacity: 1,
+    t: {
+      ES: { title: "Sencilla", description: "Habitación individual con todo lo esencial para una estadía tranquila." },
+      EN: { title: "Single", description: "Individual room with everything you need for a peaceful stay." },
+    },
+  },
+  {
+    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/27ed5d5f5c184350a998540474fd1713d48e6502?placeholderIfAbsent=true",
+    price: "$45",
+    capacity: 2,
+    t: {
+      ES: { title: "Estándar Doble", description: "Confortable y bien equipada para una estadía corta o larga." },
+      EN: { title: "Standard Double", description: "Comfortable and well-equipped for short or extended stays." },
+    },
+  },
+  {
+    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true",
+    price: "$50",
+    capacity: 2,
+    t: {
+      ES: { title: "Business Day", description: "Silenciosa, limpia y moderna, ideal para trámites y escapadas urbanas." },
+      EN: { title: "Business Day", description: "Quiet, clean and modern — perfect for paperwork or a calm city stay." },
+    },
+  },
+  {
+    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
+    price: "$55",
+    capacity: 2,
+    t: {
+      ES: { title: "Doble Superior", description: "Dos camas cómodas en un ambiente tranquilo y luminoso." },
+      EN: { title: "Superior Double", description: "Two comfortable beds in a quiet, well-lit room." },
+    },
+  },
+  {
+    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/27ed5d5f5c184350a998540474fd1713d48e6502?placeholderIfAbsent=true",
+    price: "$60",
+    capacity: 3,
+    t: {
+      ES: { title: "Triple", description: "Espaciosa y versátil, ideal para grupos pequeños o familias." },
+      EN: { title: "Triple", description: "Spacious and versatile, great for small groups or families." },
+    },
+  },
+  {
+    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
+    price: "$75",
+    capacity: 3,
+    t: {
+      ES: { title: "Suite Ejecutiva", description: "Amplia y elegante, perfecta para profesionales y estadías prolongadas." },
+      EN: { title: "Executive Suite", description: "Spacious and elegant, ideal for professionals and longer stays." },
+    },
+  },
+];
 
 const RoomsSection = () => {
   const { language } = useLanguage();
-  const t = texts[language];
-
-  const { isVisible: titleVisible, elementRef: titleRef } =
-    useScrollAnimation(0.2);
-  const { isVisible: navVisible, elementRef: navRef } = useScrollAnimation(0.3);
-  const { isVisible: cardsVisible, elementRef: cardsRef } =
-    useScrollAnimation(0.1);
-
-  const roomsData = [
-    {
-      image:
-        "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true",
-      amenities: [
-        {
-          name: t.amenities,
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/2d4b0a57ec785cff810effbaad4fdb02d4c92a4a?placeholderIfAbsent=true",
-        },
-        {
-          name: t.smartTv,
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
-        },
-        {
-          name: t.smartTv,
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
-        },
-      ],
-    },
-    {
-      image:
-        "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true",
-      amenities: [
-        {
-          name: t.amenities,
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/2d4b0a57ec785cff810effbaad4fdb02d4c92a4a?placeholderIfAbsent=true",
-        },
-        {
-          name: t.smartTv,
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
-        },
-        {
-          name: t.smartTv,
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
-        },
-      ],
-    },
-    {
-      image:
-        "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/27ed5d5f5c184350a998540474fd1713d48e6502?placeholderIfAbsent=true",
-      amenities: [
-        {
-          name: t.amenities,
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/2d4b0a57ec785cff810effbaad4fdb02d4c92a4a?placeholderIfAbsent=true",
-        },
-        {
-          name: t.smartTv,
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c47973c6e30b904e7164a14d6a67c8710c05f3fc?placeholderIfAbsent=true",
-        },
-        {
-          name: "4500ca7887ad8369846a20d1e46ef316804a8f53",
-          icon: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/4500ca7887ad8369846a20d1e46ef316804a8f53?placeholderIfAbsent=true",
-        },
-      ],
-    },
-    {
-      image:
-        "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
-      amenities: [
-        { name: t.amenities, type: "bed" },
-        { name: t.smartTv, type: "tv" },
-        { name: t.smartTv, type: "tv" },
-      ],
-      isVectorStyle: true,
-    },
-    {
-      image:
-        "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
-      amenities: [
-        { name: t.amenities, type: "bed" },
-        { name: t.smartTv, type: "tv" },
-        { name: t.smartTv, type: "tv" },
-      ],
-      isVectorStyle: true,
-    },
-    {
-      image:
-        "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
-      amenities: [
-        { name: t.amenities, type: "bed" },
-        { name: t.smartTv, type: "tv" },
-        { name: t.smartTv, type: "tv" },
-      ],
-      isVectorStyle: true,
-    },
-  ];
-
+  const titleRef = useRef(null);
+  const navRef = useRef(null);
   const cardsContainerRef = useRef(null);
+  const cardRefs = useRef([]);
 
-  const scrollAmount = 350; // px, adjust as needed
+  const scrollAmount = 350;
 
   const handleScrollLeft = () => {
     if (cardsContainerRef.current) {
@@ -130,59 +90,89 @@ const RoomsSection = () => {
     }
   };
 
-  // Helper to combine refs
-  const setCardsContainerRef = (el) => {
-    if (typeof cardsRef === "function") {
-      cardsRef(el);
-    } else if (cardsRef && typeof cardsRef === "object") {
-      cardsRef.current = el;
-    }
-    cardsContainerRef.current = el;
-  };
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
+        opacity: 0,
+        x: -36,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      gsap.from(navRef.current, {
+        opacity: 0,
+        x: 36,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: navRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      const cards = cardRefs.current.filter(Boolean);
+      if (cards.length) {
+        gsap.from(cards, {
+          opacity: 0,
+          y: 40,
+          stagger: 0.1,
+          duration: 0.75,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: cardsContainerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div className="rooms-section-header">
-      <div
-        ref={titleRef}
-        className={`rooms-title scroll-animate-left ${titleVisible ? "animate-in" : ""}`}
-      >
-        {t.title}
+      <h2 ref={titleRef} className="rooms-title">
+        {sectionTitle[language]}
+      </h2>
+
+      <div ref={navRef} className="rooms-navigation">
+        <button className="nav-arrow-button" onClick={handleScrollLeft} aria-label="Scroll left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        <button className="nav-arrow-button" onClick={handleScrollRight} aria-label="Scroll right">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
       </div>
 
-      <div
-        ref={navRef}
-        className={`rooms-navigation scroll-animate-right ${navVisible ? "animate-in" : ""}`}
-      >
-        <div className="nav-arrow-button" onClick={handleScrollLeft} tabIndex={0} role="button" aria-label="Scroll left">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/f238bbac7c3eedbf4a8952de000153f03e35a722?placeholderIfAbsent=true"
-            className="nav-arrow"
-            alt="Previous"
-          />
-        </div>
-
-        <div className="nav-arrow-button" onClick={handleScrollRight} tabIndex={0} role="button" aria-label="Scroll right">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/c69b2ba1217b00b138d62fe74c00ec49fa305779?placeholderIfAbsent=true"
-            className="nav-arrow"
-            alt="Next"
-          />
-        </div>
-      </div>
-
-      <div ref={setCardsContainerRef} className="room-cards-container">
-        {roomsData.map((room, index) => (
+      <div ref={cardsContainerRef} className="room-cards-container">
+        {rooms.map((room, index) => (
           <div
             key={index}
-            className={`room-card-wrapper stagger-animate ${cardsVisible ? "animate-in" : ""} stagger-${(index % 6) + 1}`}
+            className="room-card-wrapper"
+            ref={el => { cardRefs.current[index] = el; }}
           >
-            <div>
-              <RoomCard
-                roomImage={room.image}
-                amenities={room.amenities}
-                isVectorStyle={room.isVectorStyle}
-              />
-            </div>
+            <RoomCard
+              roomImage={room.image}
+              title={room.t[language].title}
+              description={room.t[language].description}
+              price={room.price}
+              capacity={room.capacity}
+            />
           </div>
         ))}
       </div>

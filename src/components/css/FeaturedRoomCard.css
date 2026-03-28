@@ -1,0 +1,197 @@
+/* Featured Room Card */
+.featured-room {
+  position: relative;
+  width: 100%;
+  max-width: 1471px;
+  margin-bottom: 40px;
+}
+
+.room-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 24px;
+  color: rgba(151, 187, 224, 1);
+  font-weight: 700;
+  font-family: SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif;
+  letter-spacing: -0.48px;
+  margin-bottom: 12px;
+}
+
+.badge-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.badge-text {
+  font-size: 24px;
+}
+
+.featured-room-content {
+  position: relative;
+  border-radius: 40px;
+  min-height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.room-background {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 40px;
+}
+
+.room-info {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 40px;
+}
+
+.room-title {
+  color: rgba(255, 255, 255, 1);
+  font-family: SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.64px;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.room-price {
+  color: rgba(166, 210, 255, 1);
+  font-family: SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  margin: 0;
+}
+
+.room-button {
+  position: relative;
+  z-index: 10;
+  border-radius: 24px;
+  background-color: rgba(250, 250, 250, 1);
+  border: none;
+  display: flex;
+  min-height: 80px;
+  width: 100%;
+  max-width: 350px;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 30px;
+  font-family: SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(18, 39, 61, 1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-end;
+}
+
+.room-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background-color: rgba(240, 240, 240, 1);
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .room-badge {
+    font-size: 28px;
+  }
+
+  .badge-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .badge-text {
+    font-size: 28px;
+  }
+
+  .featured-room-content {
+    border-radius: 50px;
+    min-height: 350px;
+    padding: 100px 40px;
+  }
+
+  .room-title {
+    font-size: 40px;
+    letter-spacing: -0.8px;
+  }
+
+  .room-price {
+    font-size: 24px;
+    letter-spacing: -0.48px;
+  }
+
+  .room-button {
+    min-height: 90px;
+    max-width: 400px;
+    font-size: 20px;
+    padding: 28px 30px;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .room-badge {
+    font-size: 32px;
+  }
+
+  .badge-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .badge-text {
+    font-size: 32px;
+  }
+
+  .featured-room-content {
+    border-radius: 64px;
+    min-height: 400px;
+    padding: 150px 80px;
+  }
+
+  .featured-room.reverse .featured-room-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .featured-room.reverse .room-info {
+    margin-bottom: 0;
+    max-width: 500px;
+  }
+
+  .featured-room.reverse .room-button {
+    align-self: center;
+    max-width: 419px;
+  }
+
+  .room-title {
+    font-size: 48px;
+    letter-spacing: -0.96px;
+  }
+
+  .room-price {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+  }
+
+  .room-button {
+    min-height: 100px;
+    max-width: 419px;
+    font-size: 24px;
+    padding: 36px 30px;
+  }
+}

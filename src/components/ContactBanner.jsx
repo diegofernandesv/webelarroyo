@@ -19,7 +19,14 @@ const ContactBanner = () => {
   return (
     <div className="contact-banner">
       {t.question}
-      <span className="contact-highlight">{t.whatsapp}</span>
+      <a
+        href="https://wa.me/584141501515"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="contact-highlight"
+      >
+        {t.whatsapp}
+      </a>
     </div>
   );
 };

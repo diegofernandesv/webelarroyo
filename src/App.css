@@ -3,8 +3,14 @@
   background-color: rgba(255, 255, 255, 1);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   align-items: stretch;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding-bottom: 16px;
 }
 
 .main-content {

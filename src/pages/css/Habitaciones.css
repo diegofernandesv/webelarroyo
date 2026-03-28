@@ -1,0 +1,275 @@
+/* Habitaciones Page Styles */
+.habitaciones-page {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* Hero Section */
+.habitaciones-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  margin-top: -150px;
+  width: 100%;
+  align-items: start;
+  justify-content: end;
+  padding: 60px 20px 40px;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+}
+
+
+.hero-subtitle {
+  color: rgba(166, 210, 255, 1);
+  font-family: SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.36px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Rooms Container */
+.rooms-container {
+  display: flex;
+  margin-top: 40px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  gap: 40px;
+}
+
+/* Room Grid */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 1482px;
+  margin-top: 40px;
+}
+
+/* CTA Section */
+.cta-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 80px;
+  width: 100%;
+  max-width: 736px;
+  text-align: center;
+  gap: 24px;
+}
+
+.cta-title {
+  color: var(--Blue, #12273D);
+  font-family: SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.cta-button {
+  border-radius: 24px;
+  background-color: rgba(151, 187, 224, 1);
+  border: none;
+  display: flex;
+  min-height: 80px;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background-color: rgba(131, 167, 204, 1);
+}
+
+.cta-text {
+  color: rgba(18, 39, 61, 1);
+  font-family: SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.cta-arrow {
+  border-radius: 24px;
+  background-color: rgba(18, 39, 61, 1);
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+}
+
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .habitaciones-hero {
+    min-height: 500px;
+    margin-top: -180px;
+    padding: 100px 40px 60px;
+  }
+
+  .hero-title {
+    font-size: 48px;
+    letter-spacing: -0.96px;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 24px;
+    letter-spacing: -0.48px;
+  }
+
+  .rooms-container {
+    margin-top: 60px;
+    padding: 0 40px;
+    gap: 60px;
+  }
+
+  .rooms-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+
+  .cta-section {
+    margin-top: 80px;
+    margin-bottom: 100px;
+    gap: 30px;
+  }
+
+  .cta-title {
+    font-size: 48px;
+  }
+
+  .cta-button {
+    min-height: 90px;
+    max-width: 500px;
+    padding: 28px 30px;
+  }
+
+  .cta-text {
+    font-size: 22px;
+  }
+
+  .cta-arrow {
+    min-height: 36px;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+  }
+
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .habitaciones-hero {
+    min-height: 593px;
+    margin-top: -210px;
+    padding: 150px 80px 100px;
+  }
+
+  .hero-title {
+    font-size: 48px;
+    letter-spacing: -1.28px;
+  }
+
+  .hero-subtitle {
+    font-size: 28px;
+    letter-spacing: -0.56px;
+  }
+
+  .rooms-container {
+    padding: 0 80px;
+  }
+
+  .rooms-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .cta-section {
+    margin-top: 116px;
+    margin-bottom: 116px;
+    gap: 34px;
+  }
+
+  .cta-title {
+    font-size: 64px;
+  }
+
+  .cta-button {
+    min-height: 103px;
+    max-width: 600px;
+    padding: 33px 30px;
+  }
+
+  .cta-text {
+    font-size: 24px;
+  }
+
+  .cta-arrow {
+    border-radius: 24px;
+    min-height: 38px;
+    width: 38px;
+    height: 38px;
+    padding: 8px 8px 8px 7px;
+  }
+
+  .arrow-icon {
+    width: 23px;
+    height: 23px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-title {
+    font-size: 64px;
+    letter-spacing: -1.44px;
+    font-weight: 500;
+  }
+
+  .hero-subtitle {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+  }
+
+  .cta-title {
+    font-size: 72px;
+  }
+}

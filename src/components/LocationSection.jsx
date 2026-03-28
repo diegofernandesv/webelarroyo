@@ -1,7 +1,10 @@
 import { useLanguage } from "../context/LanguageContext";
-import React from "react";
-import { useScrollAnimation, useMouseParallax } from "../hooks/useParallax";
+import React, { useRef, useEffect } from "react";
 import "./css/LocationSection.css";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const texts = {
   ES: {
@@ -20,77 +23,75 @@ const LocationSection = () => {
   const { language } = useLanguage();
   const t = texts[language];
 
-  const { isVisible: titleVisible, elementRef: titleRef } =
-    useScrollAnimation(0.2);
-  const { isVisible: descVisible, elementRef: descRef } =
-    useScrollAnimation(0.3);
-  const { isVisible: cardVisible, elementRef: cardRef } =
-    useScrollAnimation(0.4);
-  const { isVisible: imageVisible, elementRef: imageRef } =
-    useScrollAnimation(0.2);
+  const titleRef = useRef(null);
+  const addressRef = useRef(null);
+  const descRef = useRef(null);
+  const mapRef = useRef(null);
 
-  const { transform: mouseTransform, elementRef: mouseRef } =
-    useMouseParallax(15);
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      gsap.set([titleRef.current, addressRef.current, descRef.current, mapRef.current], {
+        opacity: 1,
+        y: 0,
+      });
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      tl.to(titleRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" })
+        .to(addressRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.4")
+        .to(descRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.4")
+        .to(mapRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.3");
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="location-section">
-      <div className="location-container">
-        <div className="location-content-wrapper">
-          <div className="location-text-content">
-            <div
-              ref={titleRef}
-              className={`location-title scroll-animate-left ${
-                titleVisible ? "animate-in" : ""
-              }`}
-            >
-              {t.title}
-            </div>
-
-            <div
-              ref={descRef}
-              className={`location-description scroll-animate-left ${
-                descVisible ? "animate-in" : ""
-              }`}
-            >
-              {t.desc}
-            </div>
-
-            <div
-              ref={cardRef}
-              className={`location-address-card scroll-animate-scale ${
-                cardVisible ? "animate-in" : ""
-              }`}
-            >
-              <div>
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/a8e4955cc127c5f9a33f375feecf99c13f2221af?placeholderIfAbsent=true"
-                  className="location-icon floating"
-                  alt="Location Icon"
-                />
-              </div>
-              <div className="location-address">{t.address}</div>
-            </div>
-          </div>
-
-          <div
-            ref={mouseRef}
-            className="location-image-container mouse-parallax"
-            style={{ transform: mouseTransform }}
-          >
-            <div>
-              <img
-                ref={imageRef}
-                src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/154af17daa1bd51e24e0cff4fd94e3d5c2b9a97b?placeholderIfAbsent=true"
-                className={`location-image scroll-animate-right ${
-                  imageVisible ? "animate-in" : ""
-                }`}
-                alt="Hotel Location"
-              />
-            </div>
+    <section className="location-section">
+      <div className="location-top">
+        <div className="location-left">
+          <h2 ref={titleRef} className="location-title">
+            {t.title}
+          </h2>
+          <div ref={addressRef} className="location-address-row">
+            <svg className="location-pin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+            </svg>
+            <span>{t.address}</span>
           </div>
         </div>
+
+        <p ref={descRef} className="location-desc">
+          {t.desc}
+        </p>
       </div>
-    </div>
+
+      <hr className="location-divider" />
+
+      <div ref={mapRef} className="location-map">
+        <iframe
+          title="Hotel El Arroyo Map"
+          src="https://maps.google.com/maps?q=Avenida+Lecuna+frente+al+Metro+Teatros+Caracas+Venezuela&z=16&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0, borderRadius: "inherit" }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+    </section>
   );
 };
 

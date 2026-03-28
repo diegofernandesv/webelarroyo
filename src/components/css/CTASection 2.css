@@ -1,12 +1,39 @@
 /* Call to Action Section */
 .cta-section {
   display: flex;
-  margin-top: 60px;
+  margin-top: 80px;
   flex-direction: column;
   align-items: stretch;
   gap: 30px;
   justify-content: center;
   padding: 0 20px;
+}
+
+.cta-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  color: #415971;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cta-tag p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.cta-tag-pill {
+  padding: 6px 16px;
+  border-radius: 999px;
+  background-color: rgba(151, 187, 224, 0.2);
+  color: #12273d;
 }
 
 .cta-image {
@@ -29,18 +56,36 @@
 
 .cta-title {
   color: #12273d;
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
+  font-family:
+    SF Pro Text,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cta-description {
+  margin-top: 16px;
+  color: #415971;
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 460px;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .cta-button {
   border-radius: 20px;
   background-color: rgba(151, 187, 224, 1);
   display: flex;
-  margin-top: 20px;
   min-height: 48px;
   padding: 12px 20px;
   align-items: center;
@@ -59,9 +104,14 @@
 
 .cta-button-text {
   color: rgba(18, 39, 61, 1);
-  font-size: var(--text-base);
-  font-family: var(--font-body);
-  font-weight: 400;
+  font-size: 16px;
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-weight: 500;
   white-space: nowrap;
 }
 
@@ -84,26 +134,60 @@
   width: 16px;
 }
 
+.cta-outline {
+  border-radius: 20px;
+  border: 1px solid rgba(18, 39, 61, 0.3);
+  padding: 12px 20px;
+  background: transparent;
+  font-family:
+    SF Pro Display,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  color: #12273d;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cta-outline:hover {
+  border-color: rgba(18, 39, 61, 0.6);
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .cta-section {
-    margin-top: 80px;
+    margin-top: 100px;
     gap: 40px;
     padding: 0 40px;
   }
 
   .cta-title {
-    letter-spacing: -1px;
+    font-size: 40px;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    gap: 16px;
   }
 
   .cta-button {
     border-radius: 22px;
-    margin-top: 24px;
     min-height: 56px;
     padding: 14px 25px;
     gap: 10px;
   }
 
+  .cta-button-text {
+    font-size: 18px;
+  }
+
+  .cta-outline {
+    border-radius: 22px;
+    padding: 14px 25px;
+    font-size: 18px;
+  }
 
   .cta-arrow-icon {
     border-radius: 22px;
@@ -125,7 +209,7 @@
 /* Desktop */
 @media (min-width: 992px) {
   .cta-section {
-    margin-top: 120px;
+    margin-top: 140px;
     flex-direction: row;
     align-items: center;
     gap: 40px;
@@ -147,7 +231,11 @@
   }
 
   .cta-title {
-    letter-spacing: -1.2px;
+    font-size: 56px;
+  }
+
+  .cta-description {
+    font-size: 18px;
   }
 
   .cta-button {
@@ -157,6 +245,15 @@
     align-self: start;
   }
 
+  .cta-button-text {
+    font-size: 20px;
+  }
+
+  .cta-outline {
+    border-radius: 24px;
+    padding: 13px 30px;
+    font-size: 18px;
+  }
 
   .cta-arrow-icon {
     border-radius: 24px;
@@ -173,7 +270,7 @@
 
 @media (min-width: 1200px) {
   .cta-section {
-    margin-top: 149px;
+    margin-top: 170px;
     gap: 48px;
   }
 
@@ -188,11 +285,18 @@
   }
 
   .cta-title {
-    letter-spacing: -1.5px;
+    font-size: 72px;
   }
 
-  .cta-button {
-    margin-top: 24px;
+  .cta-description {
+    font-size: 20px;
   }
 
+  .cta-button-text {
+    font-size: 24px;
+  }
+
+  .cta-outline {
+    font-size: 20px;
+  }
 }

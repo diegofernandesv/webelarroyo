@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import BurgerMenu from "./BurgerMenu";
 import "./css/NavigationHeader.css";
+import { gsap } from "gsap";
 
 const navTexts = {
   ES: {
@@ -27,13 +28,29 @@ const NavigationHeader = () => {
   const location = useLocation();
   const { language, toggleLanguage } = useLanguage();
   const t = navTexts[language];
+  const navRef = useRef(null);
 
   const isActive = (path) => {
     return location.pathname === path;
   };
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        navRef.current,
+        { y: -80, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", delay: 0.05 }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="navigation-header">
+    <div ref={navRef} className="navigation-header">
       <Link to="/webelarroyo" className="logo-link">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/109542cbc3c83c77d44b9819ca7bdc9467883379?placeholderIfAbsent=true"
@@ -83,13 +100,15 @@ const NavigationHeader = () => {
           </Link>
 
           <div className="language-selector" onClick={toggleLanguage}>
+            <svg className="globe-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
             <div className="language-content">
               <div className="language-text">{t.langLabel}</div>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/450b95e5260320f0966d3f916c63f386f1bc27a8?placeholderIfAbsent=true"
-                className="dropdown-arrow"
-                alt="Dropdown"
-              />
+              <svg className="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
             </div>
           </div>
         </div>

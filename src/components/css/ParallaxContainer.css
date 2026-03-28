@@ -4,11 +4,14 @@
   transition: transform 0.1s ease-out;
 }
 
-/* Scroll Animation Classes */
+/* ─── Scroll Animation Base ─────────────────────────────────────── */
+
 .scroll-animate {
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-animate.animate-in {
@@ -16,10 +19,13 @@
   transform: translateY(0);
 }
 
+/* Slide from left */
 .scroll-animate-left {
   opacity: 0;
-  transform: translateX(-50px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(-36px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-animate-left.animate-in {
@@ -27,10 +33,13 @@
   transform: translateX(0);
 }
 
+/* Slide from right */
 .scroll-animate-right {
   opacity: 0;
-  transform: translateX(50px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(36px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-animate-right.animate-in {
@@ -38,10 +47,13 @@
   transform: translateX(0);
 }
 
+/* Scale in */
 .scroll-animate-scale {
   opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(0.92);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-animate-scale.animate-in {
@@ -49,7 +61,8 @@
   transform: scale(1);
 }
 
-/* Floating Animation */
+/* ─── Floating Animation ─────────────────────────────────────────── */
+
 .floating {
   animation: floating 6s ease-in-out infinite;
 }
@@ -65,26 +78,23 @@
 }
 
 @keyframes floating {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
 }
 
-/* Mouse Parallax */
+/* ─── Mouse Parallax ─────────────────────────────────────────────── */
 .mouse-parallax {
   transition: transform 0.3s ease-out;
   will-change: transform;
 }
 
-/* Stagger Animation */
+/* ─── Stagger Animation ──────────────────────────────────────────── */
 .stagger-animate {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .stagger-animate.animate-in {
@@ -92,26 +102,16 @@
   transform: translateY(0);
 }
 
-.stagger-1 {
-  transition-delay: 0.1s;
-}
-.stagger-2 {
-  transition-delay: 0.2s;
-}
-.stagger-3 {
-  transition-delay: 0.3s;
-}
-.stagger-4 {
-  transition-delay: 0.4s;
-}
-.stagger-5 {
-  transition-delay: 0.5s;
-}
-.stagger-6 {
-  transition-delay: 0.6s;
-}
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.40s; }
+.stagger-6 { transition-delay: 0.48s; }
+.stagger-7 { transition-delay: 0.56s; }
+.stagger-8 { transition-delay: 0.64s; }
 
-/* Parallax Background */
+/* ─── Parallax Background ────────────────────────────────────────── */
 .parallax-bg {
   position: absolute;
   top: 0;
@@ -123,23 +123,27 @@
   z-index: -1;
 }
 
-/* Performance optimizations */
+/* ─── Performance ────────────────────────────────────────────────── */
 .parallax-container,
 .scroll-animate,
 .floating,
 .mouse-parallax {
   backface-visibility: hidden;
-  perspective: 1000px;
 }
 
-/* Reduce motion for accessibility */
+/* ─── Reduced Motion ─────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .parallax-container,
   .scroll-animate,
+  .scroll-animate-left,
+  .scroll-animate-right,
+  .scroll-animate-scale,
+  .stagger-animate,
   .floating,
   .mouse-parallax {
     transform: none !important;
     animation: none !important;
-    transition: none !important;
+    transition: opacity 0.3s ease !important;
+    opacity: 1 !important;
   }
 }

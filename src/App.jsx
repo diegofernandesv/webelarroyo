@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import "./components/css/ParallaxContainer.css";
 import ContactBanner from "./components/ContactBanner";
 import NavigationHeader from "./components/NavigationHeader";
 import Footer from "./components/Footer";
@@ -14,8 +15,10 @@ function App() {
   return (
     <Router>
       <div className="hotel-landing-page">
-        <ContactBanner />
-        <NavigationHeader />
+        <div className="sticky-header">
+          <ContactBanner />
+          <NavigationHeader />
+        </div>
 
         <main className="main-content">
           <Routes>

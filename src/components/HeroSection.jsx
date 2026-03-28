@@ -1,27 +1,12 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import image1 from "../assets/image1.png";
 import "./css/HeroSection.css";
 import { useLanguage } from "../context/LanguageContext";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const useScrollAnimation = (threshold = 0.5) => {
-  const elementRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(undefined); // undefined initially
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-        else setIsVisible(false);
-      },
-      { threshold }
-    );
-
-    if (elementRef.current) observer.observe(elementRef.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-
-  return { isVisible, elementRef };
-};
+gsap.registerPlugin(ScrollTrigger);
 
 const heroTexts = {
   ES: {
@@ -39,19 +24,39 @@ const heroTexts = {
 const HeroSection = () => {
   const { language } = useLanguage();
   const t = heroTexts[language];
-  const { isVisible: titleVisible, elementRef: titleRef } = useScrollAnimation(0.3);
-  const { isVisible: buttonVisible, elementRef: buttonRef } = useScrollAnimation(0.5);
-
-  // Parallax state and ref
+  const titleRef = useRef(null);
+  const buttonRef = useRef(null);
   const bgRef = useRef(null);
+
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      gsap.set([titleRef.current, buttonRef.current], { opacity: 1, y: 0 });
+      return;
+    }
+
+    // Entrance timeline for above-the-fold content
+    const ctx = gsap.context(() => {
+      gsap.timeline({ delay: 0.15 })
+        .fromTo(titleRef.current,
+          { opacity: 0, y: 36 },
+          { opacity: 1, y: 0, duration: 1.1, ease: "power3.out" }
+        )
+        .fromTo(buttonRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+          "-=0.65"
+        );
+    });
+
+    // Parallax scroll effect
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           if (bgRef.current) {
-            const scrolled = window.scrollY;
-            bgRef.current.style.transform = `translateY(${scrolled * 0.4}px)`;
+            bgRef.current.style.transform = `translateY(${window.scrollY * 0.4}px)`;
           }
           ticking = false;
         });
@@ -59,7 +64,11 @@ const HeroSection = () => {
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -70,41 +79,34 @@ const HeroSection = () => {
           src={image1}
           className="hero-background"
           alt="Hotel Background"
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = "https://via.placeholder.com/1920x1080";
-          }}
-          style={{ willChange: "transform", transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)" }}
+          style={{ willChange: "transform" }}
         />
       </div>
 
       <div className="hero-content">
-        <h1
-          ref={titleRef}
-          className={`hero-title${titleVisible ? " animate-in" : ""}${titleVisible === undefined ? " not-animated" : ""}`}
-        >
+        <h1 ref={titleRef} className="hero-title">
           {t.title1}
           <br />
           {t.title2}
         </h1>
 
-        <div
+        <Link
+          to="/habitaciones"
           ref={buttonRef}
-          className={`hero-button ${buttonVisible ? "animate-in" : ""}`}
+          className="hero-button"
         >
           <span className="hero-button-text">{t.button}</span>
           <div className="hero-arrow-icon">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/6cae9776603b35b835ae5d71b997bb889b43013f?placeholderIfAbsent=true"
-              alt="Arrow"
+              alt=""
               className="hero-arrow-image"
             />
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );
 };
 
 export default HeroSection;
-
