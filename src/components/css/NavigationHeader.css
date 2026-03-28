@@ -2,12 +2,12 @@
 .navigation-header {
   background-color: #fdfdfd;
   box-shadow: 0px 4px 53.2px 0px rgba(0, 0, 0, 0.11);
-  border-radius: 24px;
+  border-radius: 0;
   display: flex;
-  min-height: 70px;
-  width: calc(100% - 32px);
-  margin: 16px auto 0;
-  padding: 16px 20px;
+  min-height: 52px;
+  width: 100%;
+  margin: 0;
+  padding: 8px 16px;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -216,12 +216,12 @@
 /* Tablet */
 @media (min-width: 768px) {
   .navigation-header {
-    min-height: 80px;
-    padding: 15px 40px;
+    min-height: 58px;
+    padding: 8px 32px;
   }
 
   .logo {
-    width: 90px;
+    width: 80px;
   }
 
   .nav-container {
@@ -265,20 +265,19 @@
 @media (min-width: 992px) {
   .navigation-header {
     padding-left: 128px;
-    min-height: 90px;
-    justify-content: start;
+    padding-right: 128px;
+    min-height: 62px;
+    justify-content: space-between;
   }
 
   .logo {
-    width: 98px;
+    width: 88px;
     margin: auto 0;
   }
 
   .nav-container {
-    position: absolute;
-    right: 125px;
-    bottom: 21px;
-    gap: 64px;
+    position: static;
+    gap: 40px;
   }
 
   .nav-menu {
@@ -291,42 +290,35 @@
   }
 
   .book-button {
-    border-radius: 24px;
-    min-height: 48px;
-    padding: 10px 30px;
+    border-radius: 20px;
+    min-height: 38px;
+    padding: 8px 20px;
   }
 
   .arrow-icon {
-    border-radius: 24px;
-    width: 26px;
-    height: 26px;
-    min-height: 26px;
-    padding: 7px;
+    border-radius: 20px;
+    width: 22px;
+    height: 22px;
+    min-height: 22px;
+    padding: 5px;
   }
 
   .language-selector {
     width: auto;
-    min-height: 48px;
-    padding: 9px 10px;
-    gap: 8px;
+    min-height: 38px;
+    padding: 6px 10px;
+    gap: 6px;
   }
 
   .globe-icon {
-    width: 26px;
-    height: 26px;
-  }
-
-  .language-flag {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-  }
-
-  .dropdown-arrow {
     width: 20px;
     height: 20px;
   }
-  
+
+  .dropdown-arrow {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 

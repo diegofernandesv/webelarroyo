@@ -1,0 +1,114 @@
+/* Ring / Image Track CTA Section */
+
+.rcs-section {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 80px 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  overflow: hidden;
+}
+
+/* ── Title ────────────────────────────────────────── */
+
+.rcs-title {
+  color: #12273d;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  text-align: center;
+  margin: 0;
+  padding: 0 24px;
+  max-width: 700px;
+}
+
+/* ── Image track wrapper ──────────────────────────── */
+
+.rcs-track-wrapper {
+  position: relative;
+  width: 100%;
+  height: 56vmin;
+  overflow: visible;
+}
+
+/* The draggable track — matches original exactly */
+.rcs-track {
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  user-select: none;
+  cursor: grab;
+}
+
+.rcs-track:active {
+  cursor: grabbing;
+}
+
+.rcs-track-image {
+  width: 45vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
+  filter: brightness(0.75);
+  border-radius: 10px;
+  draggable: false;
+  pointer-events: none;
+}
+
+/* ── Button ───────────────────────────────────────── */
+
+.rcs-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background-color: rgba(151, 187, 224, 1);
+  color: #12273d;
+  font-family: var(--font-body, SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.rcs-button:hover {
+  background-color: rgba(131, 167, 204, 1);
+  transform: translateY(-2px);
+}
+
+.rcs-button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Tablet ───────────────────────────────────────── */
+
+@media (min-width: 768px) {
+  .rcs-section {
+    padding: 100px 0 120px;
+    gap: 56px;
+  }
+}
+
+/* ── Desktop ──────────────────────────────────────── */
+
+@media (min-width: 992px) {
+  .rcs-section {
+    padding: 120px 0 140px;
+    gap: 64px;
+  }
+
+  .rcs-button {
+    font-size: 18px;
+    padding: 18px 44px;
+  }
+}

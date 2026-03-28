@@ -1,0 +1,232 @@
+/* Services List Section */
+
+.sls-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 60px 20px 80px;
+}
+
+/* ── Header ───────────────────────────────────────── */
+
+.sls-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.sls-heading {
+  color: #12273d;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin: 0;
+  white-space: pre-line;
+  flex: 1;
+}
+
+.sls-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background-color: #12273d;
+  color: #f5f8fc;
+  font-family: var(--font-body, SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sls-cta-btn:hover {
+  background-color: #1a3a5c;
+  transform: translateY(-1px);
+}
+
+/* ── Rows ─────────────────────────────────────────── */
+
+.sls-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.sls-row {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+/* ── Photo ────────────────────────────────────────── */
+
+.sls-photo {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── Content ──────────────────────────────────────── */
+
+.sls-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.sls-title {
+  color: #000000;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.96px;
+  margin: 0;
+}
+
+.sls-desc {
+  color: rgba(18, 39, 61, 0.67);
+  font-family: var(--font-body, SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sls-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.sls-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background-color: #12273d;
+  color: #f5f8fc;
+  font-family: var(--font-body, SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 15px;
+  white-space: nowrap;
+  min-width: 160px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sls-btn:hover {
+  background-color: #1a3a5c;
+  transform: translateY(-1px);
+}
+
+.sls-btn-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ── Tablet ───────────────────────────────────────── */
+
+@media (min-width: 768px) {
+  .sls-section {
+    padding: 80px 48px 100px;
+  }
+
+  .sls-header {
+    margin-bottom: 80px;
+  }
+
+  .sls-rows {
+    gap: 80px;
+  }
+
+  .sls-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .sls-photo {
+    width: 52%;
+    aspect-ratio: unset;
+    height: 300px;
+  }
+
+  .sls-content {
+    flex: 1;
+    gap: 20px;
+  }
+
+  .sls-desc {
+    font-size: 16px;
+    -webkit-line-clamp: 5;
+  }
+}
+
+/* ── Desktop ──────────────────────────────────────── */
+
+@media (min-width: 992px) {
+  .sls-section {
+    padding: 100px 80px 120px;
+  }
+
+  .sls-rows {
+    gap: 100px;
+  }
+
+  .sls-row {
+    gap: 80px;
+  }
+
+  .sls-photo {
+    width: 50%;
+    height: 320px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sls-section {
+    padding: 120px 128px 140px;
+  }
+
+  .sls-header {
+    margin-bottom: 120px;
+  }
+
+  .sls-rows {
+    gap: 120px;
+  }
+
+  .sls-row {
+    gap: 100px;
+  }
+
+  .sls-photo {
+    width: 52%;
+    height: 340px;
+  }
+
+  .sls-desc {
+    font-size: 16px;
+  }
+}

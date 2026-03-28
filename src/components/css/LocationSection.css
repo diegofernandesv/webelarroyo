@@ -7,8 +7,8 @@
 .location-section {
   padding: 60px 20px 60px;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 
 /* ── Top row: title-left / desc-right ─────────────── */
@@ -100,9 +100,10 @@
   margin: 32px 0;
 }
 
-/* ── Map ──────────────────────────────────────────── */
+/* ── Map / Video ──────────────────────────────────── */
 
 .location-map {
+  position: relative;
   width: 100%;
   height: 260px;
   border-radius: 20px;
@@ -120,11 +121,25 @@
   transform: translateY(0);
 }
 
+.location-map iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Maintain 16:9 and cover the container */
+  width: 100%;
+  height: 56.25vw; /* 9/16 of viewport width = full-bleed 16:9 height */
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
 /* ── Tablet ───────────────────────────────────────── */
 
 @media (min-width: 768px) {
   .location-section {
-    padding: 80px 40px 80px;
+    padding: 80px 48px 80px;
   }
 
   .location-title {
@@ -145,7 +160,7 @@
 
 @media (min-width: 992px) {
   .location-section {
-    padding: 100px 64px 100px;
+    padding: 100px 128px 100px;
   }
 
   .location-top {

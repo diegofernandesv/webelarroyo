@@ -111,7 +111,7 @@
 @media (min-width: 768px) {
   .rooms-section-header {
     margin-top: 80px;
-    padding: 0 40px;
+    padding: 0 48px;
   }
 
   .rooms-title {
@@ -142,6 +142,7 @@
 @media (min-width: 992px) {
   .rooms-section-header {
     margin-top: 120px;
+    padding: 0 80px;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -183,7 +184,7 @@
 
 @media (min-width: 1200px) {
   .rooms-section-header {
-    padding: 0 40px;
+    padding: 0 128px;
   }
 
   .rooms-title {
@@ -202,7 +203,7 @@
 @media (min-width: 1400px) {
   .rooms-section-header {
     margin-top: 180px;
-    padding: 0 80px;
+    padding: 0 128px;
     max-width: 1800px;
   }
   .rooms-title {

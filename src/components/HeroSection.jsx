@@ -4,9 +4,6 @@ import image1 from "../assets/image1.png";
 import "./css/HeroSection.css";
 import { useLanguage } from "../context/LanguageContext";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const heroTexts = {
   ES: {
@@ -29,59 +26,60 @@ const HeroSection = () => {
   const bgRef = useRef(null);
 
   useEffect(() => {
+    const title = titleRef.current;
+    const button = buttonRef.current;
+    if (!title || !button) return;
+
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion) {
-      gsap.set([titleRef.current, buttonRef.current], { opacity: 1, y: 0 });
+      gsap.set([title, button], { opacity: 1, y: 0, clearProps: "all" });
       return;
     }
 
-    // Entrance timeline for above-the-fold content
+    // Set initial state via GSAP (not CSS) so revert always restores correctly
+    gsap.set(title, { opacity: 0, y: 36 });
+    gsap.set(button, { opacity: 0, y: 20 });
+
     const ctx = gsap.context(() => {
-      gsap.timeline({ delay: 0.15 })
-        .fromTo(titleRef.current,
-          { opacity: 0, y: 36 },
-          { opacity: 1, y: 0, duration: 1.1, ease: "power3.out" }
-        )
-        .fromTo(buttonRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
-          "-=0.65"
-        );
+      gsap.timeline({ delay: 0.1 })
+        .to(title,  { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" })
+        .to(button, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, "-=0.6");
     });
 
-    // Parallax scroll effect
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (bgRef.current) {
-            bgRef.current.style.transform = `translateY(${window.scrollY * 0.4}px)`;
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Parallax only on desktop (skip on mobile for performance)
+    let scrollHandler = null;
+    if (window.innerWidth >= 768) {
+      let ticking = false;
+      scrollHandler = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            if (bgRef.current) {
+              bgRef.current.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      window.addEventListener("scroll", scrollHandler, { passive: true });
+    }
 
     return () => {
       ctx.revert();
-      window.removeEventListener("scroll", handleScroll);
+      if (scrollHandler) window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
 
   return (
     <div className="hero-section">
-      <div className="hero-bg-wrapper">
-        <img
-          ref={bgRef}
-          src={image1}
-          className="hero-background"
-          alt="Hotel Background"
-          style={{ willChange: "transform" }}
-        />
-      </div>
+      <img
+        ref={bgRef}
+        src={image1}
+        className="hero-background"
+        alt="Hotel Background"
+        style={{ willChange: "transform" }}
+      />
 
       <div className="hero-content">
         <h1 ref={titleRef} className="hero-title">
@@ -90,11 +88,7 @@ const HeroSection = () => {
           {t.title2}
         </h1>
 
-        <Link
-          to="/habitaciones"
-          ref={buttonRef}
-          className="hero-button"
-        >
+        <Link to="/habitaciones" ref={buttonRef} className="hero-button">
           <span className="hero-button-text">{t.button}</span>
           <div className="hero-arrow-icon">
             <img

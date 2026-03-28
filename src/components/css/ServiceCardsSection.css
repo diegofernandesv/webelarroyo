@@ -1,0 +1,204 @@
+/* Service Cards Section */
+
+.service-cards-section {
+  width: 100%;
+  padding: 60px 20px 80px;
+  background-color: #f5f8fc;
+}
+
+.service-cards-heading {
+  color: #12273d;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin: 0 0 48px 0;
+}
+
+/* ── Card ─────────────────────────────────────────── */
+
+.service-stack-card {
+  border-radius: 24px;
+  width: 100%;
+  box-shadow: 0 12px 48px rgba(18, 39, 61, 0.14), 0 4px 16px rgba(18, 39, 61, 0.08);
+  /* padding inside so image floats with gap from edges */
+  padding: 20px;
+}
+
+.service-stack-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Image: rounded on all sides, floats inside card */
+.service-stack-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.service-stack-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.service-stack-title {
+  color: #12273d;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.service-stack-desc {
+  color: rgba(18, 39, 61, 0.67);
+  font-family: var(--font-body, SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.service-stack-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.service-stack-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background-color: #12273d;
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-body, SF Pro Display, -apple-system, Roboto, Helvetica, sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+}
+
+.service-stack-btn:hover {
+  background-color: #1a3a5c;
+  transform: translateY(-1px);
+}
+
+.service-stack-btn svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Tablet: go horizontal ────────────────────────── */
+
+@media (min-width: 700px) {
+  .service-cards-section {
+    padding: 80px 48px 100px;
+  }
+
+  .service-cards-heading {
+    letter-spacing: -0.8px;
+    margin-bottom: 56px;
+  }
+
+  .service-stack-card {
+    border-radius: 28px;
+    padding: 28px;
+  }
+
+  .service-stack-card-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    min-height: 320px;
+  }
+
+  .service-stack-photo {
+    width: 52%;
+    aspect-ratio: unset;
+    height: 100%;
+    min-height: 280px;
+    border-radius: 14px;
+    object-fit: cover;
+  }
+
+  .service-stack-content {
+    flex: 1;
+    gap: 18px;
+  }
+
+  .service-stack-desc {
+    font-size: 17px;
+  }
+}
+
+/* ── Desktop ──────────────────────────────────────── */
+
+@media (min-width: 992px) {
+  .service-cards-section {
+    padding: 100px 80px 120px;
+  }
+
+  .service-cards-heading {
+    letter-spacing: -1px;
+  }
+
+  .service-stack-card {
+    padding: 32px;
+  }
+
+  .service-stack-card-inner {
+    min-height: 360px;
+    gap: 48px;
+  }
+
+  .service-stack-photo {
+    width: 50%;
+    min-height: 320px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .service-cards-section {
+    padding: 120px 128px 140px;
+  }
+
+  .service-cards-heading {
+    letter-spacing: -1.2px;
+    margin-bottom: 64px;
+  }
+
+  .service-stack-card {
+    padding: 35px;
+  }
+
+  .service-stack-card-inner {
+    min-height: 400px;
+    gap: 56px;
+  }
+
+  .service-stack-photo {
+    width: 52%;
+    min-height: 340px;
+  }
+
+  .service-stack-desc {
+    font-size: 18px;
+  }
+}

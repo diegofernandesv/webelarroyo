@@ -146,7 +146,7 @@
 @media (min-width: 768px) {
   .services-section {
     min-height: 500px;
-    padding: 50px 40px;
+    padding: 50px 48px;
   }
 
   .services-container {
@@ -283,7 +283,7 @@
 @media (min-width: 1200px) {
   .services-section {
     min-height: 771px;
-    padding: 96px 126px 152px 126px;
+    padding: 96px 128px 152px 128px;
   }
 
   .services-container {

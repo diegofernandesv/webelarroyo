@@ -81,14 +81,12 @@ const LocationSection = () => {
 
       <div ref={mapRef} className="location-map">
         <iframe
-          title="Hotel El Arroyo Map"
-          src="https://maps.google.com/maps?q=Avenida+Lecuna+frente+al+Metro+Teatros+Caracas+Venezuela&z=16&output=embed"
+          title="Hotel El Arroyo Video"
+          src="https://www.youtube.com/embed/sPZmnnhrg-4?autoplay=1&mute=1&loop=1&playlist=sPZmnnhrg-4&controls=0&modestbranding=1&rel=0"
           width="100%"
           height="100%"
-          style={{ border: 0, borderRadius: "inherit" }}
+          allow="autoplay; encrypted-media"
           allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
     </section>
