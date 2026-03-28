@@ -125,10 +125,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  /* Maintain 16:9 and cover the container */
-  width: 100%;
-  height: 56.25vw; /* 9/16 of viewport width = full-bleed 16:9 height */
-  min-height: 100%;
+  /* Cover the container while maintaining 16:9 — whichever dimension is larger wins */
+  width: max(100%, 177.78%);   /* 177.78% = 100/56.25 — ensures full width coverage */
+  height: max(100%, 56.25vw);
   transform: translate(-50%, -50%);
   border: 0;
   border-radius: inherit;
