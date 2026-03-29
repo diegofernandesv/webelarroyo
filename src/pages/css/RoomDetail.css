@@ -5,14 +5,22 @@
   padding-bottom: 80px;
 }
 
-/* ── Hero ───────────────────────────────────────────── */
+/* ── Photo grid (Booking-style) ─────────────────────── */
 .rd-hero {
   position: relative;
   width: 100%;
-  height: 52vw;
-  min-height: 240px;
-  max-height: 540px;
+  background: #0d1f30;
+}
+
+/* Mobile: single image */
+.rd-hero-main {
+  position: relative;
+  width: 100%;
+  height: 56vw;
+  min-height: 220px;
+  max-height: 420px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .rd-hero-img {
@@ -21,6 +29,11 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rd-hero-main:hover .rd-hero-img { transform: scale(1.03); }
 }
 
 .rd-hero-gradient {
@@ -28,6 +41,174 @@
   inset: 0;
   background: linear-gradient(to bottom, rgba(18,39,61,0.45) 0%, transparent 40%);
   pointer-events: none;
+}
+
+/* Photo count badge (mobile only) */
+.rd-hero-count {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #fff;
+  pointer-events: none;
+}
+
+/* Grid thumbnails (hidden on mobile) */
+.rd-hero-grid {
+  display: none;
+}
+
+/* Desktop: side-by-side grid */
+@media (min-width: 768px) {
+  .rd-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    height: 480px;
+    max-height: 520px;
+  }
+
+  .rd-hero-main {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: 100%;
+    max-height: none;
+    min-height: 0;
+    border-radius: 0;
+  }
+
+  .rd-hero-count { display: none; }
+
+  .rd-hero-grid {
+    display: contents;
+  }
+
+  .rd-hero-grid-cell {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .rd-hero-grid-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .rd-hero-grid-cell:hover img { transform: scale(1.05); }
+  }
+
+  /* "+N more" overlay on last cell */
+  .rd-hero-more {
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 39, 61, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    gap: 6px;
+    transition: background 0.2s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .rd-hero-grid-cell:hover .rd-hero-more {
+      background: rgba(18, 39, 61, 0.45);
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .rd-hero { height: 520px; }
+}
+
+/* ── Lightbox ───────────────────────────────────────── */
+.rd-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 16, 24, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.rd-lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+.rd-lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.rd-lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+.rd-lightbox-prev,
+.rd-lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.12);
+  border: none;
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.rd-lightbox-prev { left: 12px; }
+.rd-lightbox-next { right: 12px; }
+
+.rd-lightbox-prev:hover,
+.rd-lightbox-next:hover { background: rgba(255,255,255,0.22); }
+
+.rd-lightbox-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.6);
 }
 
 /* ── Back button ────────────────────────────────────── */
@@ -337,9 +518,7 @@
 @media (min-width: 992px) {
   .rd-page { padding-bottom: 80px; }
 
-  .rd-hero { height: 58vh; max-height: 620px; }
-
-  .rd-back-btn { top: 24px; left: 128px; }
+  .rd-back-btn { top: 24px; left: 24px; }
 
   .rd-layout {
     flex-direction: row;

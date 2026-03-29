@@ -9,6 +9,7 @@ const texts = {
     home: "Inicio",
     rooms: "Habitaciones",
     services: "Servicios",
+    info: "Info",
     contact: "Contacto",
     book: "Reserva ya",
     question: "¿Tienes alguna pregunta?",
@@ -19,6 +20,7 @@ const texts = {
     home: "Home",
     rooms: "Rooms",
     services: "Services",
+    info: "Info",
     contact: "Contact",
     book: "Book now",
     question: "Have a question?",
@@ -57,6 +59,7 @@ const BurgerMenu = () => {
     { to: "/", label: t.home },
     { to: "/habitaciones", label: t.rooms },
     { to: "/servicios", label: t.services },
+    { to: "/info", label: t.info },
     { to: "/contacto", label: t.contact },
   ];
 

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { BOOKING_URL } from "../data/config";
 import { gsap } from "gsap";
@@ -23,7 +23,7 @@ const ui = {
     checkInTime: "A partir de las 2:00 PM",
     checkOutTime: "Hasta las 12:00 PM",
     noSmoking: "No se permite fumar",
-    noPets: "No se admiten mascotas",
+    pets: "Pet friendly — mascotas bienvenidas",
     book: "Reservar esta habitación",
     question: "¿Tienes preguntas?",
     whatsapp: "Escríbenos por WhatsApp",
@@ -44,7 +44,7 @@ const ui = {
     checkInTime: "From 2:00 PM",
     checkOutTime: "Until 12:00 PM",
     noSmoking: "No smoking",
-    noPets: "No pets allowed",
+    pets: "Pet friendly — pets welcome",
     book: "Reserve this room",
     question: "Have questions?",
     whatsapp: "Message us on WhatsApp",
@@ -63,12 +63,31 @@ const RoomDetail = () => {
 
   const room = getRoomBySlug(slug);
   const otherRooms = rooms.filter((r) => r.slug !== slug).slice(0, 3);
+  const galleryImages = room?.images ?? (room ? [room.image] : []);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const openLightbox = (i) => { setActiveIdx(i); setLightboxOpen(true); };
+  const closeLightbox = () => setLightboxOpen(false);
+  const prevPhoto = (e) => { e.stopPropagation(); setActiveIdx((i) => (i - 1 + galleryImages.length) % galleryImages.length); };
+  const nextPhoto = (e) => { e.stopPropagation(); setActiveIdx((i) => (i + 1) % galleryImages.length); };
 
   const heroRef    = useRef(null);
   const contentRef = useRef(null);
   const cardRef    = useRef(null);
 
-  useEffect(() => { window.scrollTo(0, 0); }, [slug]);
+  useEffect(() => { window.scrollTo(0, 0); setActiveIdx(0); setLightboxOpen(false); }, [slug]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const onKey = (e) => {
+      if (e.key === "ArrowLeft")  setActiveIdx((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+      if (e.key === "ArrowRight") setActiveIdx((i) => (i + 1) % galleryImages.length);
+      if (e.key === "Escape")     setLightboxOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxOpen, galleryImages.length]);
 
   useEffect(() => {
     if (!room) return;
@@ -105,17 +124,86 @@ const RoomDetail = () => {
   return (
     <div className="rd-page">
 
-      {/* ── Hero ── */}
+      {/* ── Photo grid ── */}
       <div className="rd-hero" ref={heroRef}>
-        <img src={room.image} alt={data.title} className="rd-hero-img" />
-        <div className="rd-hero-gradient" aria-hidden="true" />
-        <button className="rd-back-btn" onClick={() => navigate("/habitaciones")} aria-label={t.back}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M19 12H5M12 5l-7 7 7 7" />
-          </svg>
-          <span>{t.back}</span>
-        </button>
+
+        {/* Main photo */}
+        <div className="rd-hero-main" onClick={() => openLightbox(0)}>
+          <img src={galleryImages[0]} alt={data.title} className="rd-hero-img" />
+          <div className="rd-hero-gradient" aria-hidden="true" />
+          <button className="rd-back-btn" onClick={(e) => { e.stopPropagation(); navigate("/habitaciones"); }} aria-label={t.back}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M19 12H5M12 5l-7 7 7 7" />
+            </svg>
+            <span>{t.back}</span>
+          </button>
+          {galleryImages.length > 1 && (
+            <span className="rd-hero-count" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+              </svg>
+              {galleryImages.length} fotos
+            </span>
+          )}
+        </div>
+
+        {/* Grid thumbnails (desktop) */}
+        {galleryImages.length > 1 && (
+          <div className="rd-hero-grid">
+            {galleryImages.slice(1, 5).map((src, i) => {
+              const realIdx = i + 1;
+              const isLast = realIdx === Math.min(galleryImages.length - 1, 4);
+              const remaining = galleryImages.length - 5;
+              return (
+                <div key={realIdx} className="rd-hero-grid-cell" onClick={() => openLightbox(realIdx)}>
+                  <img src={src} alt={`${data.title} — foto ${realIdx + 1}`} />
+                  {isLast && remaining > 0 && (
+                    <div className="rd-hero-more">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+                      </svg>
+                      +{remaining} fotos
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
       </div>
+
+      {/* ── Lightbox ── */}
+      {lightboxOpen && (
+        <div className="rd-lightbox" onClick={closeLightbox}>
+          <img
+            src={galleryImages[activeIdx]}
+            alt={data.title}
+            className="rd-lightbox-img"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button className="rd-lightbox-close" onClick={closeLightbox} aria-label="Cerrar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+          {galleryImages.length > 1 && (
+            <>
+              <button className="rd-lightbox-prev" onClick={prevPhoto} aria-label="Anterior">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6"/>
+                </svg>
+              </button>
+              <button className="rd-lightbox-next" onClick={nextPhoto} aria-label="Siguiente">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </button>
+              <span className="rd-lightbox-counter">{activeIdx + 1} / {galleryImages.length}</span>
+            </>
+          )}
+        </div>
+      )}
 
       {/* ── Two-column layout ── */}
       <div className="rd-layout">
@@ -213,12 +301,11 @@ const RoomDetail = () => {
               <li className="rd-policy">
                 <span className="rd-policy-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                   </svg>
                 </span>
                 <div>
-                  <p className="rd-policy-label">{t.noPets}</p>
+                  <p className="rd-policy-label">{t.pets}</p>
                 </div>
               </li>
             </ul>

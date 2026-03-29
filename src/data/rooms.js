@@ -1,9 +1,14 @@
 // Shared room data — used by RoomsSection, Habitaciones page, and RoomDetail page
 
+const imgA = "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true";
+const imgB = "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/27ed5d5f5c184350a998540474fd1713d48e6502?placeholderIfAbsent=true";
+const imgC = "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true";
+
 export const rooms = [
   {
     slug: "matrimonial-estandar",
-    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true",
+    image: imgA,
+    images: [imgA, imgB, imgC],
     price: 40,
     capacity: 2,
     t: {
@@ -23,7 +28,8 @@ export const rooms = [
   },
   {
     slug: "matrimonial-plus",
-    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/27ed5d5f5c184350a998540474fd1713d48e6502?placeholderIfAbsent=true",
+    image: imgB,
+    images: [imgB, imgA, imgC],
     price: 45,
     capacity: 2,
     t: {
@@ -43,7 +49,8 @@ export const rooms = [
   },
   {
     slug: "suite-junior",
-    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
+    image: imgC,
+    images: [imgC, imgA, imgB],
     price: 60,
     capacity: 2,
     t: {
@@ -63,7 +70,8 @@ export const rooms = [
   },
   {
     slug: "suite-cabana",
-    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
+    image: imgC,
+    images: [imgC, imgB, imgA],
     price: 60,
     capacity: 3,
     t: {
@@ -83,7 +91,8 @@ export const rooms = [
   },
   {
     slug: "triple-estandar",
-    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/27ed5d5f5c184350a998540474fd1713d48e6502?placeholderIfAbsent=true",
+    image: imgB,
+    images: [imgB, imgC, imgA],
     price: 55,
     capacity: 3,
     t: {
@@ -103,7 +112,8 @@ export const rooms = [
   },
   {
     slug: "cuadruple-estandar",
-    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/bb0a7cfa8f105c812bf6fce9a5fdaacb5962f634?placeholderIfAbsent=true",
+    image: imgA,
+    images: [imgA, imgC, imgB],
     price: 60,
     capacity: 4,
     t: {
@@ -123,7 +133,8 @@ export const rooms = [
   },
   {
     slug: "cuadruple-plus",
-    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
+    image: imgC,
+    images: [imgC, imgA, imgB],
     price: 70,
     capacity: 4,
     t: {
@@ -143,7 +154,8 @@ export const rooms = [
   },
   {
     slug: "suite-arroyo",
-    image: "https://cdn.builder.io/api/v1/image/assets/e9cac1e18ae64186984fb4d639c633bc/d406fb2ce66360bdf62fb0be768dd3d45440201c?placeholderIfAbsent=true",
+    image: imgC,
+    images: [imgC, imgB, imgA],
     price: 75,
     capacity: 4,
     t: {

@@ -11,6 +11,7 @@ const navTexts = {
     home: "Inicio",
     rooms: "Habitaciones",
     services: "Servicios",
+    info: "Info",
     contact: "Contacto",
     book: "Reserva ya",
     langLabel: "ES"
@@ -19,6 +20,7 @@ const navTexts = {
     home: "Home",
     rooms: "Rooms",
     services: "Services",
+    info: "Info",
     contact: "Contact",
     book: "Book now",
     langLabel: "EN"
@@ -79,6 +81,12 @@ const NavigationHeader = () => {
             className={`nav-item ${isActive("/servicios") ? "nav-item-active" : ""}`}
           >
             {t.services}
+          </Link>
+          <Link
+            to="/info"
+            className={`nav-item ${location.pathname.startsWith("/info") ? "nav-item-active" : ""}`}
+          >
+            {t.info}
           </Link>
           <Link
             to="/contacto"
