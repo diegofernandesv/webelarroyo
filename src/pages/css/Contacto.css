@@ -1,0 +1,263 @@
+/* ══════════════════════════════════════════
+   Contacto — matches home hero visual style
+   ══════════════════════════════════════════ */
+
+.ct-page {
+  background: #ffffff;
+}
+
+/* ── Hero ─────────────────────────────────── */
+.ct-hero {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 24px 64px;
+}
+
+.ct-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  will-change: transform;
+}
+
+.ct-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(18, 39, 61, 0.90) 0%,
+    rgba(18, 39, 61, 0.50) 40%,
+    rgba(18, 39, 61, 0.08) 72%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.ct-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.ct-hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -2px;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.ct-hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 440px;
+}
+
+/* ── CTAs ─────────────────────────────────── */
+.ct-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.ct-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ct-btn:active {
+  transform: scale(0.97);
+}
+
+/* Primary — matches hero button from homepage */
+.ct-btn--primary {
+  background: #97bbe0;
+  color: #12273d;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ct-btn--primary:hover {
+    background: #83a7cc;
+    transform: translateY(-2px);
+  }
+}
+
+.ct-btn-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: #12273d;
+  border-radius: 100px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* Secondary */
+.ct-btn--secondary {
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+
+/* ── Info section — LocationSection style ─── */
+.ct-info-section {
+  padding: 60px 24px 72px;
+}
+
+.ct-info-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: #12273d;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin: 0 0 28px;
+}
+
+.ct-divider {
+  border: none;
+  border-top: 1px solid rgba(18, 39, 61, 0.12);
+  margin: 0 0 36px;
+}
+
+.ct-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 32px;
+}
+
+.ct-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ct-info-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(18, 39, 61, 0.42);
+  margin: 0;
+}
+
+.ct-info-value {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: #12273d;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ct-info-link {
+  text-decoration: none;
+  color: #12273d;
+  transition: color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ct-info-link:hover {
+    color: #97bbe0;
+  }
+}
+
+/* ── Tablet ───────────────────────────────── */
+@media (min-width: 768px) {
+  .ct-hero {
+    padding: 0 48px 80px;
+  }
+
+  .ct-hero-title {
+    letter-spacing: -2.5px;
+  }
+
+  .ct-btn {
+    padding: 15px 28px;
+    font-size: var(--text-lg);
+  }
+
+  .ct-btn-arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ct-info-section {
+    padding: 80px 48px 96px;
+  }
+
+  .ct-info-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .ct-info-item {
+    padding-right: 32px;
+    border-right: 1px solid rgba(18, 39, 61, 0.1);
+    padding-left: 32px;
+  }
+
+  .ct-info-item:first-child {
+    padding-left: 0;
+  }
+
+  .ct-info-item:last-child {
+    border-right: none;
+  }
+}
+
+/* ── Desktop ──────────────────────────────── */
+@media (min-width: 992px) {
+  .ct-hero {
+    padding: 0 80px 96px;
+  }
+
+  .ct-info-section {
+    padding: 100px 128px 120px;
+  }
+
+  .ct-info-title {
+    letter-spacing: -1px;
+  }
+}
+
+/* ── Wide ─────────────────────────────────── */
+@media (min-width: 1200px) {
+  .ct-hero {
+    padding: 0 128px 108px;
+  }
+
+  .ct-hero-title {
+    letter-spacing: -3px;
+  }
+}

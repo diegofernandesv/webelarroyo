@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Habitaciones from "./pages/Habitaciones";
 import RoomDetail from "./pages/RoomDetail";
 import Servicios from "./pages/Servicios";
+import ServiceDetail from "./pages/ServiceDetail";
 import Contacto from "./pages/Contacto";
 import LocationSection from "./components/LocationSection";
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/habitaciones" element={<Habitaciones />} />
             <Route path="/habitaciones/:slug" element={<RoomDetail />} />
             <Route path="/servicios" element={<Servicios />} />
+            <Route path="/servicios/:slug" element={<ServiceDetail />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/location" element={<LocationSection />} />
           </Routes>

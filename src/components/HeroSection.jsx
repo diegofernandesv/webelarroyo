@@ -9,12 +9,14 @@ const heroTexts = {
   ES: {
     title1: "Tranquilidad y Confort",
     title2: "en el Centro de Caracas",
-    button: "Nuestras Habitaciones"
+    button: "Nuestras Habitaciones",
+    searchLabel: "Verificar disponibilidad"
   },
   EN: {
     title1: "Tranquility and Comfort",
     title2: "in the Center of Caracas",
-    button: "Our Rooms"
+    button: "Our Rooms",
+    searchLabel: "Check Availability"
   }
 };
 
@@ -98,6 +100,16 @@ const HeroSection = () => {
             />
           </div>
         </Link>
+      </div>
+
+      <div className="hero-booking-bar">
+        <cb-property-date-picker
+          property-code="noiHWD"
+          button-label={t.searchLabel}
+          lang={language.toLowerCase()}
+          open-in-new-tab="false"
+          class-name="cb-hotel-picker"
+        />
       </div>
     </div>
   );
