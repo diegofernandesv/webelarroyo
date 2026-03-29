@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
-import { Link } from "react-router-dom";
 import "./css/RingCTASection.css";
+import { BOOKING_URL } from "../data/config";
 
 const texts = {
   ES: {
@@ -163,13 +163,13 @@ const RingCTASection = () => {
         </div>
       </div>
 
-      <Link to="/contacto" className="rcs-button">
+      <a href={BOOKING_URL} className="rcs-button">
         {t.button}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />
         </svg>
-      </Link>
+      </a>
     </section>
   );
 };

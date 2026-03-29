@@ -1,18 +1,30 @@
 import { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./css/RoomCard.css";
 import { useLanguage } from "../context/LanguageContext";
 import { gsap } from "gsap";
 
-const RoomCard = ({ roomImage, title, description, price, capacity }) => {
+const RoomCard = ({ roomImage, title, description, price, capacity, slug }) => {
   const { language } = useLanguage();
+  const navigate = useNavigate();
   const cardRef = useRef(null);
 
-  const label = language === "ES" ? "Reserva Ya" : "Book Now";
   const capacityLabel = language === "ES"
     ? `${capacity} ${capacity === 1 ? "persona" : "personas"}`
     : `${capacity} ${capacity === 1 ? "person" : "people"}`;
   const nightLabel = language === "ES" ? "/noche" : "/night";
+  const bookLabel = language === "ES" ? "Ver habitación" : "View room";
+
+  const handleCardClick = () => {
+    if (slug) navigate(`/habitaciones/${slug}`);
+  };
+
+  const handleKeyDown = (e) => {
+    if (slug && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      navigate(`/habitaciones/${slug}`);
+    }
+  };
 
   useEffect(() => {
     const card = cardRef.current;
@@ -40,7 +52,15 @@ const RoomCard = ({ roomImage, title, description, price, capacity }) => {
   }, []);
 
   return (
-    <article ref={cardRef} className="room-card">
+    <article
+      ref={cardRef}
+      className={`room-card${slug ? " room-card--linked" : ""}`}
+      onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
+      role={slug ? "link" : undefined}
+      tabIndex={slug ? 0 : undefined}
+      aria-label={slug ? title : undefined}
+    >
       <div className="room-media">
         <img src={roomImage} className="room-image" alt={title} />
         <span className="room-capacity-badge">
@@ -64,14 +84,14 @@ const RoomCard = ({ roomImage, title, description, price, capacity }) => {
           </div>
         </div>
 
-        <Link to="/contacto" className="room-book-button">
-          <span className="room-book-text">{label}</span>
+        <div className="room-book-button" aria-hidden="true">
+          <span className="room-book-text">{bookLabel}</span>
           <div className="room-book-arrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </div>
-        </Link>
+        </div>
       </div>
     </article>
   );

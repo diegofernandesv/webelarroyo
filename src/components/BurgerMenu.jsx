@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { BOOKING_URL } from "../data/config";
 import { useLanguage } from "../context/LanguageContext";
 import "./css/BurgerMenu.css";
 
@@ -119,7 +120,7 @@ const BurgerMenu = () => {
 
         {/* Action buttons — right after nav */}
         <div className="bm-actions">
-          <Link to="/contacto" className="bm-book" onClick={close}>
+          <a href={BOOKING_URL} className="bm-book" onClick={close}>
             {t.book}
             <span className="bm-book-arrow">
               <img
@@ -127,7 +128,7 @@ const BurgerMenu = () => {
                 alt=""
               />
             </span>
-          </Link>
+          </a>
 
           <button className="bm-lang" onClick={toggleLanguage}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

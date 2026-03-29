@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { BOOKING_URL } from "../data/config";
 import { useLanguage } from "../context/LanguageContext";
 import BurgerMenu from "./BurgerMenu";
 import "./css/NavigationHeader.css";
@@ -88,7 +89,7 @@ const NavigationHeader = () => {
         </div>
 
         <div className="nav-actions">
-          <Link to="/contacto" className="book-button">
+          <a href={BOOKING_URL} className="book-button">
             <div className="book-text">{t.book}</div>
             <div className="arrow-icon">
               <img
@@ -97,7 +98,7 @@ const NavigationHeader = () => {
                 alt="Arrow"
               />
             </div>
-          </Link>
+          </a>
 
           <div className="language-selector" onClick={toggleLanguage}>
             <svg className="globe-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

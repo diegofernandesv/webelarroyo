@@ -1,5 +1,5 @@
 import { useLanguage } from "../context/LanguageContext";
-import { Link } from "react-router-dom";
+import { BOOKING_URL } from "../data/config";
 import { useRef, useEffect } from "react";
 import "./css/CTASection.css";
 import { gsap } from "gsap";
@@ -60,7 +60,7 @@ const CTASection = () => {
         <h2 ref={titleRef} className="cta-title">
           {t.title}
         </h2>
-        <Link ref={buttonRef} to="/contacto" className="cta-button">
+        <a ref={buttonRef} href={BOOKING_URL} className="cta-button">
           <span className="cta-button-text">{t.button}</span>
           <div className="cta-arrow-icon">
             <img
@@ -69,7 +69,7 @@ const CTASection = () => {
               alt=""
             />
           </div>
-        </Link>
+        </a>
       </div>
     </div>
   );
