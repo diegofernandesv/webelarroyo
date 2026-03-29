@@ -26,7 +26,7 @@ function App() {
 
         <main className="main-content">
           <Routes>
-            <Route path="/webelarroyo" element= {<Home/>} />
+            <Route path="/" element={<Home/>} />
             <Route path="/habitaciones" element={<Habitaciones />} />
             <Route path="/habitaciones/:slug" element={<RoomDetail />} />
             <Route path="/servicios" element={<Servicios />} />
