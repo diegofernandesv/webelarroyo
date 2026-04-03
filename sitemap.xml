@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://diegofernandesv.github.io/webelarroyo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diegofernandesv.github.io/webelarroyo/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Habitaciones -->
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://diegofernandesv.github.io/webelarroyo/habitaciones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diegofernandesv.github.io/webelarroyo/habitaciones"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Room detail pages -->
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones/matrimonial-estandar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones/matrimonial-plus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones/suite-junior</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones/suite-cabana</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones/triple-estandar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones/cuadruple-estandar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones/cuadruple-plus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/habitaciones/suite-arroyo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Servicios -->
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/servicios</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://diegofernandesv.github.io/webelarroyo/servicios"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diegofernandesv.github.io/webelarroyo/servicios"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Service detail pages -->
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/servicios/panaderia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/servicios/restaurante</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/servicios/recepcion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/servicios/transporte</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contacto -->
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/contacto</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://diegofernandesv.github.io/webelarroyo/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diegofernandesv.github.io/webelarroyo/contacto"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Info -->
+  <url>
+    <loc>https://diegofernandesv.github.io/webelarroyo/info</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://diegofernandesv.github.io/webelarroyo/info"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diegofernandesv.github.io/webelarroyo/info"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
